@@ -7,5 +7,8 @@ Rails.application.routes.draw do
     ressources :bookings, only: '%i[:new, :create]'
 
     ressources :dashboard, only: '%i[:show]'
+
   end
+  resources :bookings
+  resources :dashboard, only: '%i[:show]'
 end

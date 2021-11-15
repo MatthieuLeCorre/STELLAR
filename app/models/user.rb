@@ -8,4 +8,7 @@ class User < ApplicationRecord
   validates :last_name, presence: true
   validates :email, presence: true
   validates :type, presence: true
+
+  has_many :bookings
+  has_many :trips, through: :bookings
 end
