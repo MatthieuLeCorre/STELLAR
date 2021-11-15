@@ -59,5 +59,36 @@ trip5 = Trip.create({
   transport_price: 8300,
   spaceship: "Space X Falcon 9",
   description: "You need some warmth and you're not afraid of sun burns ? This trip is made for you ! ",
-  survival: 17
+  survival: 17,
+})
+  
+  trips6 = Trip.create({
+  name: 'Neptune',
+  gravity: 'average',
+  exit: true,
+  price_per_night: 10_000,
+  transport_price: 1000,
+  spaceship: 'Angara',
+  description: 'Welcome to the neptune travel.',
+  survival: 15,
+})
+
+trips7 = Trip.create({
+  name: 'Neptune',
+  gravity: 'average',
+  exit: true,
+  price_per_night: 30_000,
+  transport_price: 10_000,
+  spaceship: 'Starship SN15',
+  description: '',
+  survival: 78,
+})
+
+trips8 = Trip.create({
+  name: 'Saturne',
+  gravity: 'strong',
+  price_per_night: '3400',
+  transport_price: '500',
+  description: '',
+  survival: 75,
 })
