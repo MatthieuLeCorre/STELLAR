@@ -13,6 +13,7 @@ class TripsController < ApplicationController
   end
 
   def create
+    authorize @trip
     @trip = Trip.new(trip_params)
     @trip.save
     redirect_to trips_path
