@@ -12,6 +12,7 @@ class BookingsController < ApplicationController
     @user = current_user
     @trip = Trip.find(params[:trip_id])
     @booking = Booking.new
+    authorize @booking
   end
 
   def create

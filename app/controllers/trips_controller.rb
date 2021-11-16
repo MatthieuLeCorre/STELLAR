@@ -1,11 +1,6 @@
 class TripsController < ApplicationController
   def index
-    if params[:query].present?
-      @trips = Trip.where('planet LIKE ?', "%#{params[:query].capitalize}%")
-      # à modifier
-    else
-      @trips = policy_scope(Trip).order(created_at: :desc)
-    end
+    @trips = policy_scope(Trip).order(created_at: :desc)
   end
 
   def show
@@ -32,12 +27,18 @@ class TripsController < ApplicationController
   end
 
   def edit
+    # @trip = Trip.find(params[:id])
   end
 
   def update
+    # @trip.update(trip_params)
+    # redirect_to trip_path(@trip)
   end
 
   def destroy
+    @trip = Trip.find(params[:id])
+    @trip.destroy
+    redirect_to trips_path
   end
 
   private
