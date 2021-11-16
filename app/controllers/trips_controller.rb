@@ -1,6 +1,10 @@
 class TripsController < ApplicationController
   def index
-    @trips = policy_scope(Trip).order(created_at: :desc)
+    if params[:query].present?
+      @trips = Trip.where(planet: params[:query].capitalize)
+    else
+      @trips = policy_scope(Trip).order(created_at: :desc)
+    end
   end
 
   def show
@@ -18,7 +22,7 @@ class TripsController < ApplicationController
   def create
     @trip = Trip.new(trip_params)
     @trip.save
-    authorize @trip
+    #authorize @trip
     if @trip.save
       redirect_to trips_path
     else
