@@ -37,9 +37,17 @@ class BookingsController < ApplicationController
 
   def destroy
     @booking = Booking.find(params[:id])
-    autorize @booking
+    #autorize @booking
     @booking.destroy
     redirect_to bookings_path
+  end
+
+  def payment
+    @booking = Booking.find(params[:booking_id])
+  end
+  # regarder redirect to avec notice
+
+  def payment_confirm
   end
 
   private

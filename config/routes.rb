@@ -7,7 +7,10 @@ Rails.application.routes.draw do
     resources :bookings, only: [:new, :create]
   end
 
-  resources :bookings, except: [:new, :create]
+  resources :bookings, except: [:new, :create] do
+    get '/payment', to: 'bookings#payment'
+    get '/payment/success', to: 'bookings#payment_confirm'
+  end
 
   get '/dashboard', to: 'dashboard#dashboard'
 end
