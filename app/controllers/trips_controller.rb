@@ -13,6 +13,7 @@ class TripsController < ApplicationController
   end
 
   def create
+    authorize @trip
     @trip = Trip.new(trip_params)
     @trip.save
     redirect_to trips_path
@@ -30,6 +31,8 @@ class TripsController < ApplicationController
   private
 
   def trip_params
-    params.require(:trips).permit(:planet, :gravity, :exit, :price_per_night, :transport_price, :spaceship, :description, :survival)
+    params.require(:trip).permit(:planet, :gravity, :exit, :price_per_night,
+                                 :transport_price, :spaceship, :description,
+                                 :survival, :photo)
   end
 end

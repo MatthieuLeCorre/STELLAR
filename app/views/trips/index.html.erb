@@ -1,14 +1,40 @@
-<h1> All the best trips !</h1>
 
-<ul>
-<% @trips.each do |trip| %>
-<li><h3>Planet: <%= trip.planet %></h3></li>
-<li><h6>Gravity: <%= trip.gravity%></h6></li>
-<li><p>Extra-vehicular activities: <%= trip.exit %></p></li>
-<li><p>Price per night: <%= trip.price_per_night %></p></li>
-<li><p>Transport price: <%= trip.transport_price %></p></li>
-<li><p>Spaceship: <%= trip.spaceship %></p></li>
-<li><p><%= trip.description %></p></li>
-<li><p>Chance of survival: <%= trip.survival %> %</p></li>
-<% end %>
-</ul>
+
+
+
+<div class="container">
+  <ul>
+    <div class="title">
+      <h2 class="text-center"> All the best trips ! </h2>
+    </div>
+
+    <div class="cards">
+    <% @trips.each do |trip| %>
+        <div class="card-trip-2">
+
+        <%= link_to trip_path(trip.id) do %>
+              <% if trip.photo.attached? == false %>
+                <%= image_tag("https://images.theconversation.com/files/392339/original/file-20210329-17-1vm95zi.jpg?ixlib=rb-1.1.0&q=45&auto=format&w=1200&h=675.0&fit=crop", class: "img-card") %>
+                <% else %>
+                <%= image_tag(cl_image_path trip.photo.key, height: 200, width: 430, crop: :fill, class: "img-card") %>
+                <% end %>
+            <% end %>
+
+          <div class="card-trip-infos">
+
+                <li><h3><strong>Planet:</strong> <%= trip.planet %></h3></li>
+                <li><h6><strong>Gravity: </strong> <%= trip.gravity%></h6></li>
+                <li><p><strong>Extra-vehicular activities: </strong><%= trip.exit %></p></li>
+                <li><p><strong>Price per night: </strong><%= trip.price_per_night %>$</p></li>
+                <li><p><strong>Transport price:</strong> <%= trip.transport_price %>$</p></li>
+                <li><p><strong>Spaceship:</strong> <%= trip.spaceship %></p></li>
+                <li><p><strong>"</strong><%= trip.description %><strong>"</strong></p></li>
+                <li><p><strong>Chance of survival: </strong> <%= trip.survival %> %</p></li>
+
+          </div>
+        </div>
+        <% end %>
+    </div>
+
+  </ul>
+</div>

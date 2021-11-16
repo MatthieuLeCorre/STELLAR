@@ -7,6 +7,7 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 trip1 = Trip.create({
+
   planet: "Mercury",
   gravity: "Very weak",
   exit: true,
