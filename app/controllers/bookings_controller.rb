@@ -1,7 +1,7 @@
 class BookingsController < ApplicationController
 
   def index
-    @bookings = policy_scope(Booking).order(created_at: :desc)
+    @bookings = Booking.all
   end
 
   def show
@@ -12,7 +12,6 @@ class BookingsController < ApplicationController
     @user = current_user
     @trip = Trip.find(params[:trip_id])
     @booking = Booking.new
-    authorize @booking
   end
 
   def create
@@ -22,7 +21,6 @@ class BookingsController < ApplicationController
     @booking.trip = @trip
     @booking.user_id = @user.id
     @booking.save
-    authorize @booking
     redirect_to bookings_path(@trip)
   end
 
