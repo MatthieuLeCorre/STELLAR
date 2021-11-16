@@ -1,10 +1,19 @@
-<h3>Complete your space experiences</h3>
+<div class="container">
+  <div class="title-index">
+  <h3><b>Travel</h3></b>
+  </div>
 
-<ul>
-<% @bookings.each do |booking| %>
-<li><h3>Name: <%= booking.name %></h3></li>
-<li><h6>Start Date: <%= booking.start_date%></h6></li>
-<li><p>End date: <%= booking.end_date %></p></li>
-<li><p>Price: <%= booking.price %></p></li>
-<% end %>
-</ul>
+  <div class="card-index">
+    <ul>
+      <% @bookings.each do |booking| %>
+      <li><h3>Name: <%= booking.name %></h3></li>
+      <div class="card-trip-infos">
+      <li><h6>Start Date: <%= booking.start_date%></h6></li>
+      <li><h6>End date: <%= booking.end_date %></h6></li>
+      <li><p>Price: <%= booking.price %>$</p></li>
+      </div>
+      <% end %>
+    </ul>
+  </div>
+
+</div>
