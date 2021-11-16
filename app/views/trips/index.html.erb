@@ -1,5 +1,7 @@
 
-
+<% if policy(Trip).create? %>
+  <%= link_to "New trip", new_trip_path %>
+<% end %>
 
 
 <div class="container">
