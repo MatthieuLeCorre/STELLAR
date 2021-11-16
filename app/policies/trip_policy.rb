@@ -13,7 +13,7 @@ class TripPolicy < ApplicationPolicy
   #   # - user:   the `current_user` signed in with Devise.
   # end
 
-  def destroy?
-    record.user_id == user.id
-  end
+  # def destroy?
+  #   record.user_id == user.id
+  # end
 end

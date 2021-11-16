@@ -22,26 +22,19 @@
             <li><p>End date : <%= booking.end_date %></p></li>
             <li><p>Price: <%= booking.price %>$</p></li>
           </div>
+        </div>
       <% end %>
-
-    </ul>
-  </div>
-  <div>
-    <% @bookings.each do |booking| %>
-      <% if policy(booking).update? %>
-        <%= link_to "Update", edit_booking_path(booking) %>
-      <% end %>
-  <% end %>
-  </div>
-   <div>
-    <% @bookings.each do |booking| %>
-      <% if policy(booking).destroy? %>
-        <%= link_to "Delete", edit_booking_path(booking) %>
-      <% end %>
-  <% end %>
-  </div>
 
     </div>
+
+    <div>
+      <% @bookings.each do |booking| %>
+        <% if policy(booking).destroy? %>
+          <%= link_to "Delete", booking_path(booking), method: :delete, data: { confirm: "Are you sure?" }%>
+        <% end %>
+      <% end %>
+    </div>
+
   </ul>
 
 
