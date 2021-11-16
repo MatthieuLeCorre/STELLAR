@@ -1,0 +1,10 @@
+<h3>Complete your space experiences</h3>
+
+<ul>
+<% @bookings.each do |booking| %>
+<li><h3>Name: <%= booking.name %></h3></li>
+<li><h6>Start Date: <%= booking.start_date%></h6></li>
+<li><p>End date: <%= booking.end_date %></p></li>
+<li><p>Price: <%= booking.price %></p></li>
+<% end %>
+</ul>

@@ -1,0 +1,7 @@
+<h3>Complete your space experiences</h3>
+
+<%= simple_form_for [@booking] do |f| %>
+  <%= f.input :name, placeholder: "Add name" %>
+  <%= f.input :rating, as: :select, collection: (1..5), required: true, prompt: "What's your rating", input_html: { data: { controller: "jquery-bar-rating" } } %>
+  <%= f.submit class:"btn btn-flat" %>
+<% end %>
