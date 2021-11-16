@@ -44,6 +44,14 @@ class BookingsController < ApplicationController
     redirect_to bookings_path
   end
 
+  def payment
+    @booking = Booking.find(params[:booking_id])
+  end
+  # regarder redirect to avec notice
+
+  def payment_confirm
+  end
+
   private
 
   def booking_params

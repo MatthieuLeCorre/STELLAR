@@ -1,0 +1,27 @@
+<div class="container">
+  <div class="payment-container">
+  <div class="d-flex justify-content-around">
+    <button class= "payment-mode">Mastercard</button>
+    <button class= "payment-mode">Paypal</button>
+  </div>
+  <div>
+  </div>
+    <div class="payment-informations">
+      <h3>Card Name</h3>
+      <input type="text">
+    </div>
+    <div class="payment-informations">
+      <h3>Card Number</h3>
+      <input type="text">
+    </div>
+    <div class="payment-informations">
+      <h3>CVV</h3>
+      <input type="text" placeholder="···">
+    </div>
+    <div class="payment-informations">
+      <h3>Expiration date</h3>
+      <input type="text" placeholder="MM/YY">
+    </div>
+    <%= link_to "Confirm payment", booking_path(@booking), class:"btn btn-flat" %>
+  </div>
+</div>
