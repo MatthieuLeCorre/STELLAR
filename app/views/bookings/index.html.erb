@@ -1,18 +1,29 @@
 <div class="container">
-  <div class="title-index">
-  <h3><b>Travel</h3></b>
-  </div>
+  <ul>
+    <div class="title-index">
+      <h3><b>Travel</h3></b>
+    </div>
 
-  <div class="card-index">
-    <ul>
+    <div class="grid-index">
       <% @bookings.each do |booking| %>
-      <li><h3>Name: <%= booking.name %></h3></li>
-      <div class="card-trip-infos">
-      <li><h6>Start Date: <%= booking.start_date%></h6></li>
-      <li><h6>End date: <%= booking.end_date %></h6></li>
-      <li><p>Price: <%= booking.price %>$</p></li>
-      </div>
+        <div class="card-index">
+
+          <%= link_to booking_path(booking.id) do %>
+              <% if booking.trip.photo.attached? == false %>
+                <%= image_tag("https://images.theconversation.com/files/392339/original/file-20210329-17-1vm95zi.jpg?ixlib=rb-1.1.0&q=45&auto=format&w=1200&h=675.0&fit=crop", class: "img-card") %>
+                <% else %>
+                <%= image_tag(cl_image_path trip.photo.key, height: 200, width: 430, class: "img-card") %>
+              <% end %>
+            <% end %>
+
+          <div class="card-infos">
+            <li><h3><%= booking.name %></h3></li>
+            <li><p>Start date : <%= booking.start_date%></p></li>
+            <li><p>End date : <%= booking.end_date %></p></li>
+            <li><p>Price: <%= booking.price %>$</p></li>
+          </div>
       <% end %>
+
     </ul>
   </div>
   <div>
@@ -29,5 +40,9 @@
       <% end %>
   <% end %>
   </div>
+
+    </div>
+  </ul>
+
 
 </div>

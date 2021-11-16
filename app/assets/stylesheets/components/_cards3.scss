@@ -1,10 +1,20 @@
+.grid-index {
+  display: grid;
+  margin-bottom: 35px;
+  margin-left: 35px;
+  margin-right: 35px;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 16px;
+  justify-content: center;
+}
+
 .card-index {
   list-style-type: none;
   padding: 0px;
   overflow: hidden;
   background: white;
   box-shadow: 0 0 12px rgba(0,0,0,0.3);
-  height: 300px;
+  height: 100%;
   width: 300px;
   border-radius: 5px;
   margin: 5px;
@@ -29,6 +39,10 @@
     box-shadow: 0 0 40px rgba(0,0,0,0.3);
     transition: all 300ms ease-in-out;
   }
+}
+
+.card-infos {
+  margin: 16px;
 }
 
 .title-index {
