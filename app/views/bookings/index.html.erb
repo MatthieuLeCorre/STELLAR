@@ -15,5 +15,19 @@
       <% end %>
     </ul>
   </div>
+  <div>
+    <% @bookings.each do |booking| %>
+      <% if policy(booking).update? %>
+        <%= link_to "Update", edit_booking_path(booking) %>
+      <% end %>
+  <% end %>
+  </div>
+   <div>
+    <% @bookings.each do |booking| %>
+      <% if policy(booking).destroy? %>
+        <%= link_to "Delete", edit_booking_path(booking) %>
+      <% end %>
+  <% end %>
+  </div>
 
 </div>
