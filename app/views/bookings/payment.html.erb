@@ -1,22 +1,23 @@
 <div class="container">
   <div class="payment-container">
-  <div class="d-flex justify-content-around">
-    <button class= "payment-mode">Mastercard</button>
-    <button class= "payment-mode">Paypal</button>
-  </div>
-  <div>
-  </div>
+    <div class="payment-logos d-flex align-items-center justify-content-between">
+      <a href=""><img src="<%= image_path('mastercard_logo.png') %>" alt="" style="width: 100px"></a>
+      <a href=""><img src="<%= image_path('visa_logo.png') %>" alt="" style="width: 100px"></a>
+      <a href=""><img src="<%= image_path('paypal_logo.png') %>" alt="" style="width: 100px"></a>
+    </div>
     <div class="payment-informations">
       <h3>Card Name</h3>
       <input type="text">
     </div>
-    <div class="payment-informations">
-      <h3>Card Number</h3>
-      <input type="text">
-    </div>
-    <div class="payment-informations">
-      <h3>CVV</h3>
-      <input type="text" placeholder="···">
+    <div class="d-flex align-items-center justify-content-between">
+      <div class="payment-informations">
+        <h3>Card Number</h3>
+        <input type="text">
+      </div>
+      <div class="payment-informations">
+        <h3>CVV</h3>
+        <input type="text" placeholder="···">
+      </div>
     </div>
     <div class="payment-informations">
       <h3>Expiration date</h3>

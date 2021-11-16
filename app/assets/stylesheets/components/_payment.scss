@@ -1,7 +1,31 @@
 .payment-container {
-  margin: 30px;
+  margin: 30px 350px;
   padding: 30px;
   border: 5px solid;
   border-radius: 5px;
   border-color: rgb(91, 69, 214);
+}
+
+.payment-informations input {
+  border-radius: 5px;
+  width: 250px;
+}
+
+.payment-informations {
+  margin: 8px 0;
+}
+
+#mastercard {
+  width: 100px;
+  height: 100px;
+  background-size: cover;
+}
+
+.payment-logos {
+  margin-bottom: 16px;
+}
+
+.payment-container .btn {
+  margin-top: 16px;
+  display: block;
 }
