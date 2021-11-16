@@ -3,6 +3,7 @@
 <%= simple_form_for [@trip] do |f| %>
   <%= f.input :planet, placeholder: "Where is your trip?" %>
   <%= f.input :description, as: :text, placeholder: "Description of the trip here!" %>
+  <%= f.input :photo, as: :file %>
   <%= f.input :gravity, placeholder: "What is the gravity of your planet?" %>
   <%= f.input :exit, as: :boolean, placeholder: "Can you go outside the colony?" %>
   <%= f.input :price_per_night, as: :integer, placeholder: "What's the price per night?"%>
