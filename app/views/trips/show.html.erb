@@ -1,0 +1,49 @@
+<div class="container">
+  <div class="title">
+        <h2 class="violet gras"> Trip on <%= @trip.planet %> - <%= @trip.price_per_night %> $ / per night</h2>
+  </div>
+  <div class="box">
+    <div class="cards">
+      <div class="card-trip-show">
+        <% if @trip.photo.attached? == false %>
+          <%= image_tag("https://images.theconversation.com/files/392339/original/file-20210329-17-1vm95zi.jpg?ixlib=rb-1.1.0&q=45&auto=format&w=1200&h=675.0&fit=crop", class: "img-card") %>
+          <% else %>
+          <%= cl_image_tag @trip.photo.key, class: "img-card" %>
+        <% end %>
+
+          <div>
+          <br>
+            <li><h3><strong>Planet:</strong> <%= @trip.planet %></h3></li>
+            <br>
+            <li><p><strong class="violet">Gravity: </strong> <%= @trip.gravity%></p></li>
+            <li><p><strong class="violet">Extra-vehicular activities: </strong><%= @trip.exit %></p></li>
+            <li><p><strong class="violet">Price per night: </strong><%= @trip.price_per_night %>$</p></li>
+            <li><p><strong class="violet">Transport price:</strong> <%= @trip.transport_price %>$</p></li>
+            <li><p><strong class="violet">Spaceship:</strong> <%= @trip.spaceship %></p></li>
+            <li><p><strong class="violet">Comment from agency: "</strong><%= @trip.description %><strong class="violet">"</strong></p></li>
+            <li><p><strong class="violet">Chance of survival: </strong> <%= @trip.survival %> %</p></li>
+          </div>
+        </div>
+    </div>
+
+    <div class="cards">
+      <div class="card-trip-show-2">
+
+
+          <br>
+            <li class="text-center"><h3><strong>Interested in this trip ?</strong> </h3></li>
+            <br>
+            <li><p><strong class="violet">Planet: </strong> <%= @trip.planet%></p></li>
+            <li><p><strong class="violet">Price per night: </strong><%= @trip.price_per_night %>$</p></li>
+            <li><p><strong class="violet">Transport price:</strong> <%= @trip.transport_price %>$</p></li>
+            <li><p><strong class="violet">Spaceship:</strong> <%= @trip.spaceship %></p></li>
+            <li><p><strong class="violet">Comment from agency: "</strong><%= @trip.description %><strong class="violet">"</strong></p></li>
+            <br>
+            <br>
+            <li class="text-center"><p><%= link_to "Book this trip !", new_trip_booking_path(@trip), class: "button-perso" %> </p></li>
+          </div>
+        </div>
+    </div>
+
+  </div>
+</div>

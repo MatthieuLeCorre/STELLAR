@@ -1,5 +1,7 @@
 <div class="banner flex-column" style="background-image: linear-gradient(rgba(0,0,0,0.1),rgba(0,0,0,0.1)), url(<%= image_path('banner.jpg') %>)">
-    <h1>The solar system has never been this close.</h1>
+    <h1 class="text-center">
+    <span data-controller="typed-js"></span>
+    </h1>
     <%= render "shared/search_bar" %>
 </div>
 
@@ -32,6 +34,7 @@
                 <li><p><strong>Spaceship:</strong> <%= trip.spaceship %></p></li>
                 <li><p><strong>"</strong><%= trip.description %><strong>"</strong></p></li>
                 <li><p><strong>Chance of survival: </strong> <%= trip.survival %> %</p></li>
+
 
           </div>
         </div>
