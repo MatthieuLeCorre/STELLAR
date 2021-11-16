@@ -12,7 +12,3 @@
   <%= f.input :survival, collection: 1..100, prompt: "What's the survival probability?" %>
   <%= f.submit class:"btn btn-flat" %>
 <% end %>
-
-<% if policy(trip).create? %>
-  <%= link_to "New trip", new_restaurant_path %>
-<% end %>

@@ -9,12 +9,13 @@ class TripsController < ApplicationController
 
   def new
     @trip = Trip.new
+    authorize @trip
   end
 
   def create
-    authorize @trip
     @trip = Trip.new(trip_params)
     @trip.save
+    authorize @trip
     redirect_to trips_path
   end
 
