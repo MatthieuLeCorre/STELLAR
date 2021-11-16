@@ -61,9 +61,9 @@ trip5 = Trip.create({
   description: "You need some warmth and you're not afraid of sun burns ? This trip is made for you ! ",
   survival: 17,
 })
-  
+
   trips6 = Trip.create({
-  name: 'Neptune',
+  planet: 'Neptune',
   gravity: 'average',
   exit: true,
   price_per_night: 10_000,
@@ -74,7 +74,7 @@ trip5 = Trip.create({
 })
 
 trips7 = Trip.create({
-  name: 'Neptune',
+  planet: 'Neptune',
   gravity: 'average',
   exit: true,
   price_per_night: 30_000,
@@ -85,7 +85,7 @@ trips7 = Trip.create({
 })
 
 trips8 = Trip.create({
-  name: 'Saturne',
+  planet: 'Saturne',
   gravity: 'strong',
   price_per_night: '3400',
   transport_price: '500',

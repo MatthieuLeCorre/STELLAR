@@ -1,0 +1,14 @@
+<h1> All the best trips !</h1>
+
+<ul>
+<% @trips.each do |trip| %>
+<li><h3>Planet: <%= trip.planet %></h3></li>
+<li><h6>Gravity: <%= trip.gravity%></h6></li>
+<li><p>Extra-vehicular activities: <%= trip.exit %></p></li>
+<li><p>Price per night: <%= trip.price_per_night %></p></li>
+<li><p>Transport price: <%= trip.transport_price %></p></li>
+<li><p>Spaceship: <%= trip.spaceship %></p></li>
+<li><p><%= trip.description %></p></li>
+<li><p>Chance of survival: <%= trip.survival %> %</p></li>
+<% end %>
+</ul>
