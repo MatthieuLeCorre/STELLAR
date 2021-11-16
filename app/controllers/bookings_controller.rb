@@ -9,16 +9,19 @@ class BookingsController < ApplicationController
   end
 
   def new
-    @trip = Trip.find[:trip_id]
+    @user = current_user
+    @trip = Trip.find(params[:trip_id])
     @booking = Booking.new
   end
 
   def create
     @booking = Booking.new(booking_params)
-    @trip = Trip.find[:trip_id]
+    @user = current_user
+    @trip = Trip.find(params[:trip_id])
     @booking.trip = @trip
+    @booking.user_id = @user.id
     @booking.save
-    redirect_to bookings_path(@booking)
+    redirect_to bookings_path(@trip)
   end
 
   def edit
@@ -40,6 +43,6 @@ class BookingsController < ApplicationController
   private
 
   def booking_params
-    params.require(:booking).permit(:start_date, :end_date, :price)
+    params.require(:booking).permit(:name, :start_date, :end_date, :price, :user_id)
   end
 end

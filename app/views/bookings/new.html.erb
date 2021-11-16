@@ -1,7 +1,9 @@
 <h3>Complete your space experiences</h3>
 
-<%= simple_form_for [@booking] do |f| %>
+<%= simple_form_for [@trip, @booking] do |f| %>
   <%= f.input :name, placeholder: "Add name" %>
-  <%= f.input :rating, as: :select, collection: (1..5), required: true, prompt: "What's your rating", input_html: { data: { controller: "jquery-bar-rating" } } %>
+  <%= f.input :start_date, as: :date, html5:true, required: true, prompt: "What's your start date"%>
+  <%= f.input :end_date, as: :date, html5:true, required: true, prompt: "What's your end date"%>
+  <%= f.input :price, placeholder: "Add price" %>
   <%= f.submit class:"btn btn-flat" %>
 <% end %>
