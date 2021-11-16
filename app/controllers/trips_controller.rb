@@ -10,13 +10,20 @@ class TripsController < ApplicationController
   def new
     @trip = Trip.new
     authorize @trip
+    @spaceships = ["Space X Falcon 9", "Space X Falcon Heavy", "Ariane 5",
+                   "NASA Orion Spacecraft", "NASA Atlantis Spacecraft", "Angara",
+                   "Starship SN15", "Proton"]
   end
 
   def create
     @trip = Trip.new(trip_params)
     @trip.save
     authorize @trip
-    redirect_to trips_path
+    if @trip.save
+      redirect_to trips_path
+    else
+      render :new
+    end
   end
 
   def edit
