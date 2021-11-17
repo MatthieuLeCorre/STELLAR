@@ -13,15 +13,18 @@ class BookingPolicy < ApplicationPolicy
     record.user == user
   end
 
+  def edit?
+    record.user == user
+  end
+
+
   def payment_confirm?
     record.user == user
   end
 
-  # def update?
-  #   record.user == user
-  #   # - record: the trip passed to the `authorize` method in controller
-  #   # - user:   the `current_user` signed in with Devise.
-  # end
+  def update?
+    record.user == user
+  end
 
   def destroy?
     record.user == user
