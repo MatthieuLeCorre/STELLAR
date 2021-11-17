@@ -13,32 +13,43 @@
     </div>
 
     <div class="cards">
-    <% @trips_good.each do |trip| %>
-        <div class="card-trip-2">
-
-        <%= link_to trip_path(trip.id) do %>
-              <% if trip.photo.attached? == false %>
-                <%= image_tag("https://images.theconversation.com/files/392339/original/file-20210329-17-1vm95zi.jpg?ixlib=rb-1.1.0&q=45&auto=format&w=1200&h=675.0&fit=crop", class: "img-card") %>
-                <% else %>
-                <%= image_tag(cl_image_path trip.photo.key, height: 200, width: 430, class: "img-card") %>
-                <% end %>
-            <% end %>
-
-          <div class="card-trip-infos">
-
-                <li><h3><strong>Planet:</strong> <%= trip.planet %></h3></li>
-                <li><h6><strong>Gravity: </strong> <%= trip.gravity%></h6></li>
-                <li><p><strong>Extra-vehicular activities: </strong><%= trip.exit %></p></li>
-                <li><p><strong>Price per night: </strong><%= trip.price_per_night %>$</p></li>
-                <li><p><strong>Transport price:</strong> <%= trip.transport_price %>$</p></li>
-                <li><p><strong>Spaceship:</strong> <%= trip.spaceship %></p></li>
-                <li><p><strong>"</strong><%= trip.description %><strong>"</strong></p></li>
-                <li><p><strong>Chance of survival: </strong> <%= trip.survival %> %</p></li>
+      <% @trips_good.each do |trip| %>
+        <div class="card-trip">
 
 
-          </div>
+                <div>
+                <%= link_to trip_path(trip.id) do %>
+                      <% if trip.photo.attached? == false %>
+                        <%= image_tag("https://images.theconversation.com/files/392339/original/file-20210329-17-1vm95zi.jpg?ixlib=rb-1.1.0&q=45&auto=format&w=1200&h=675.0&fit=crop", class: "img-card") %>
+                        <% else %>
+                        <%= image_tag(cl_image_path trip.photo.key, height: 200, width: 430, class: "img-card") %>
+                        <% end %>
+                    <% end %>
+                </div>
+
+                <div>
+                  <div class="card-trip-infos">
+
+                        <li><h3><strong>Planet:</strong> <%= trip.planet %></h3></li>
+                        <li><h6><strong>Gravity: </strong> <%= trip.gravity%></h6></li>
+                        <li><p><strong>Trip infos: </strong> <%= trip.description%></p></li>
+                </div>
+
+
+
+
         </div>
-        <% end %>
+                        <div class="text-center">
+                          <%= link_to "See more", new_trip_booking_path(trip), class: "button-perso-3"%>
+                        </div>
+      </div>
+
+
+
+
+
+
+      <% end %>
     </div>
   </ul>
 
@@ -73,4 +84,5 @@
       <span class="visually-hidden">Next</span>
     </button>
   </div>
+
 </div>
