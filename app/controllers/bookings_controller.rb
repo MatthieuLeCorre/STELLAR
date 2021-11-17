@@ -21,10 +21,12 @@ class BookingsController < ApplicationController
     authorize @booking
     @user = current_user
     @trip = Trip.find(params[:trip_id])
+    @booking.name = "Trip to #{@trip.planet}"
     @booking.trip = @trip
     @booking.user_id = @user.id
+    @booking.price = (((@booking.end_date - @booking.start_date) * @trip.price_per_night) + @trip.transport_price) * @booking.number_of_passengers
     @booking.save
-    redirect_to dashboard_path
+    redirect_to booking_payment_path(@booking)
   end
 
   def edit
@@ -64,6 +66,6 @@ class BookingsController < ApplicationController
   private
 
   def booking_params
-    params.require(:booking).permit(:name, :start_date, :end_date, :price)
+    params.require(:booking).permit(:name, :start_date, :end_date, :price, :number_of_passengers)
   end
 end
