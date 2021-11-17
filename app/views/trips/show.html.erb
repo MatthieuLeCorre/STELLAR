@@ -30,19 +30,15 @@
 
     <div class="cards">
       <div class="card-trip-show-2">
-
-
-          <br>
-            <li class="text-center"><h3><strong>Interested in this trip ?</strong> </h3></li>
-            <br>
-            <li><p><strong class="violet">Planet: </strong> <%= @trip.planet%></p></li>
-            <li><p><strong class="violet">Price per night: </strong><%= @trip.price_per_night %>$</p></li>
-            <li><p><strong class="violet">Transport price:</strong> <%= @trip.transport_price %>$</p></li>
-            <li><p><strong class="violet">Spaceship:</strong> <%= @trip.spaceship %></p></li>
-            <li><p><strong class="violet">Comment from agency: "</strong><%= @trip.description %><strong class="violet">"</strong></p></li>
-            <br>
-            <br>
-            <li class="text-center"><p><%= link_to "Book this trip !", new_trip_booking_path(@trip), class: "button-perso" %> </p></li>
+        <div class="p-3 text-center">
+        <h3>Book your trip now!</h3>
+        <%= simple_form_for [@trip, @booking] do |f| %>
+          <%= f.input :start_date, as: :date, html5:true, required: true, prompt: "What's your start date"%>
+          <%= f.input :end_date, as: :date, html5:true, required: true, prompt: "What's your end date"%>
+          <%= f.input :number_of_passengers, placeholder: "Number of passengers" %>
+          <%= f.submit class:"button-show" %>
+        <% end %>
+        </div>
           </div>
         </div>
     </div>
