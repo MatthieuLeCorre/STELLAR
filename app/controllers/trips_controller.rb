@@ -23,7 +23,7 @@ class TripsController < ApplicationController
     @trip = Trip.new(trip_params)
     @trip.user_id = current_user.id
     @trip.save
-    #authorize @trip
+    authorize @trip
     if @trip.save
       redirect_to dashboard_path
     else
