@@ -1,11 +1,12 @@
 class BookingsController < ApplicationController
 
-  def index
-    @bookings = policy_scope(Booking).order(created_at: :desc)
-  end
+  # def index
+  #   @bookings = policy_scope(Booking).order(created_at: :desc)
+  # end
 
   def show
     @booking = Booking.find(params[:id])
+    @trip = @booking.trip
   end
 
   def new
@@ -23,7 +24,7 @@ class BookingsController < ApplicationController
     @booking.trip = @trip
     @booking.user_id = @user.id
     @booking.save
-    redirect_to bookings_path(@trip)
+    redirect_to dashboard_path
   end
 
   def edit
@@ -32,16 +33,16 @@ class BookingsController < ApplicationController
 
   def update
     @booking = Booking.find(params[:id])
-    authorize @booking
+    # authorize @booking
     @booking.update(booking_params)
-    redirect_to bookings_path(@booking)
+    redirect_to dashboard_path
   end
 
   def destroy
     @booking = Booking.find(params[:id])
     authorize @booking
     @booking.destroy
-    redirect_to bookings_path
+    redirect_to dashboard_path
   end
 
   def payment

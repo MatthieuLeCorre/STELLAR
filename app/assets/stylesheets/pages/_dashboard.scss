@@ -1,10 +1,9 @@
-.card-trip-index {
-  position: relative;
+.card-dashboard-2 {
   padding: 0px;
   overflow: hidden;
   background: white;
   box-shadow: 0 0 12px rgba(0,0,0,0.3);
-  height: 500px;
+  height: 600px;
   width: 300px;
   border-radius: 5px;
   margin: 5px;
@@ -30,10 +29,6 @@
       box-shadow: 0 0 0 3px rgb(91, 69, 214);
       transition: all 300ms ease-in-out;
     }
-  .ml-auto .p-2 {
-    position: absolute;
-    bottom: 0;
-  }
 }
 
 h3 {
@@ -44,7 +39,7 @@ h6{
   color: rgb(91, 69, 214);
 }
 
-.button-perso-2 {
+.button-dashboard-2 {
   padding-left: 100px;
   padding-right: 100px;
   padding-top: 10px;
@@ -60,9 +55,4 @@ h6{
     background-color: rgb(57, 47, 116);
     opacity: 1;
   }
-}
-
-.card-trip-infos-index {
-  padding: 16px;
-  height: 250px;
 }

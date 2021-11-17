@@ -13,66 +13,96 @@
     </div>
 
     <div class="cards">
-    <% @trips_good.each do |trip| %>
-        <div class="card-trip-2">
-
-        <%= link_to trip_path(trip.id) do %>
-              <% if trip.photo.attached? == false %>
-                <%= image_tag("https://images.theconversation.com/files/392339/original/file-20210329-17-1vm95zi.jpg?ixlib=rb-1.1.0&q=45&auto=format&w=1200&h=675.0&fit=crop", class: "img-card") %>
-                <% else %>
-                <%= image_tag(cl_image_path trip.photo.key, height: 200, width: 430, class: "img-card") %>
-                <% end %>
-            <% end %>
-
-          <div class="card-trip-infos">
-
-                <li><h3><strong>Planet:</strong> <%= trip.planet %></h3></li>
-                <li><h6><strong>Gravity: </strong> <%= trip.gravity%></h6></li>
-                <li><p><strong>Extra-vehicular activities: </strong><%= trip.exit %></p></li>
-                <li><p><strong>Price per night: </strong><%= trip.price_per_night %>$</p></li>
-                <li><p><strong>Transport price:</strong> <%= trip.transport_price %>$</p></li>
-                <li><p><strong>Spaceship:</strong> <%= trip.spaceship %></p></li>
-                <li><p><strong>"</strong><%= trip.description %><strong>"</strong></p></li>
-                <li><p><strong>Chance of survival: </strong> <%= trip.survival %> %</p></li>
+      <% @trips_good.each do |trip| %>
+        <div class="card-trip">
 
 
-          </div>
+                <div>
+                <%= link_to trip_path(trip.id) do %>
+                      <% if trip.photo.attached? == false %>
+                        <%= image_tag("https://images.theconversation.com/files/392339/original/file-20210329-17-1vm95zi.jpg?ixlib=rb-1.1.0&q=45&auto=format&w=1200&h=675.0&fit=crop", class: "img-card") %>
+                        <% else %>
+                        <%= image_tag(cl_image_path trip.photo.key, height: 200, width: 430, class: "img-card") %>
+                        <% end %>
+                    <% end %>
+                </div>
+
+                <div>
+                  <div class="card-trip-infos">
+
+                        <li><h3><strong>Planet:</strong> <%= trip.planet %></h3></li>
+                        <li><h6><strong>Gravity: </strong> <%= trip.gravity%></h6></li>
+                        <li><p><strong>Trip infos: </strong> <%= trip.description%></p></li>
+                </div>
+
+
+
+
         </div>
-        <% end %>
+                        <div class="text-center">
+                          <%= link_to "See more", new_trip_booking_path(trip), class: "button-perso-3"%>
+                        </div>
+      </div>
+
+
+
+
+
+
+      <% end %>
     </div>
   </ul>
 
 
  <br>
  <br>
+  
+<div class="text-center">
+    <h2>Some people think we offer pretty crazy experiences</h3>
+  </div>
 
+  <div class="twitter">
+    <div class="cards-twitter">
+      <img src="<%= image_path('twitt.png') %>"alt="...">
+    </div>
+    <div class="cards-twitter">
+      <img src="<%= image_path('twitt.png') %>"alt="...">
+    </div>
+    <div class="cards-twitter">
+      <img src="<%= image_path('twitt.png') %>"alt="...">
+    </div>
+  </div>
+ </div>
+
+  
   <div class="container-caroussel">
-    <h2 class="title text-center">For amazing memories</h2>
-    <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
-      <div class="carousel-indicators">
-        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
-        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+      <h2 class="title text-center">For amazing memories</h2>
+      <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-indicators">
+          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+        </div>
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <img src="<%= image_path('photo-1542649761-0bdd3753c8a7.jpg') %>" class="d-block" alt="...">
+          </div>
+          <div class="carousel-item">
+            <img src="<%= image_path('spacexspaceforceoct2020.jpg') %>" class="d-block" alt="...">
+          </div>
+          <div class="carousel-item">
+            <img src="<%= image_path('000_9PG3CZ.jpg') %>" class="d-block center" alt="...">
+          </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
       </div>
-      <div class="carousel-inner">
-        <div class="carousel-item active">
-          <img src="<%= image_path('photo-1542649761-0bdd3753c8a7.jpg') %>" class="d-block" alt="...">
-        </div>
-        <div class="carousel-item">
-          <img src="<%= image_path('spacexspaceforceoct2020.jpg') %>" class="d-block" alt="...">
-        </div>
-        <div class="carousel-item">
-          <img src="<%= image_path('000_9PG3CZ.jpg') %>" class="d-block center" alt="...">
-        </div>
-      </div>
-      <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
-        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Previous</span>
-      </button>
-      <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
-        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Next</span>
-      </button>
     </div>
   </div>
 </div>

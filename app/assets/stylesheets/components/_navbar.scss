@@ -2,6 +2,10 @@
   justify-content: space-between;
   background: black;
   padding: 15px 30px;
+  position: sticky;
+  width: 100%;
+  z-index: 2;
+  top: 0;
 }
 
 .navbar-lewagon .navbar-collapse {
@@ -36,5 +40,3 @@
   padding: 0px 6px;
   margin-left : 8px;
 }
-
-

@@ -1,7 +1,8 @@
 class TripsController < ApplicationController
   def index
     if params[:query].present?
-      @trips = Trip.where(planet: params[:query].capitalize)
+      @trips = policy_scope(Trip).where(planet: params[:query].capitalize)
+
     else
       @trips = policy_scope(Trip).order(created_at: :desc)
     end
@@ -21,28 +22,30 @@ class TripsController < ApplicationController
 
   def create
     @trip = Trip.new(trip_params)
+    @trip.user_id = current_user.id
     @trip.save
-    #authorize @trip
+    authorize @trip
     if @trip.save
-      redirect_to trips_path
+      redirect_to dashboard_path
     else
       render :new
     end
   end
 
   def edit
-    # @trip = Trip.find(params[:id])
+    @trip = Trip.find(params[:id])
   end
 
   def update
-    # @trip.update(trip_params)
-    # redirect_to trip_path(@trip)
+    @trip = Trip.find(params[:id])
+    @trip.update(trip_params)
+    redirect_to dashboard_path
   end
 
   def destroy
     @trip = Trip.find(params[:id])
     @trip.destroy
-    redirect_to trips_path
+    redirect_to dashboard_path
   end
 
   private

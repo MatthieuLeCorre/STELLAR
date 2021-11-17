@@ -1,6 +1,4 @@
-<% if policy(Trip).create? %>
-  <%= link_to "New trip", new_trip_path %>
-<% end %>
+<%= render "shared/search_bar" %>
 
 <div class="container">
   <ul>
@@ -10,7 +8,7 @@
 
     <div class="cards">
     <% @trips.each do |trip| %>
-        <div class="card-trip-2">
+        <div class="card-trip-index">
 
         <%= link_to trip_path(trip.id) do %>
               <% if trip.photo.attached? == false %>
@@ -19,7 +17,7 @@
                 <%= image_tag(cl_image_path trip.photo.key, height: 200, width: 430, class: "img-card") %>
                 <% end %>
             <% end %>
-          <div class="card-trip-infos">
+          <div class="card-trip-infos-index">
 
                 <li><h3><strong class="violet" >Planet:</strong> <%= trip.planet %></h3></li>
                 <li><h6><strong class="violet">Gravity: </strong> <%= trip.gravity%></h6></li>
@@ -29,9 +27,13 @@
                 <li><p><strong>Spaceship:</strong> <%= trip.spaceship %></p></li>
                 <li><p><strong>"</strong><%= trip.description %><strong>"</strong></p></li>
                 <br>
-                <li><p><%= link_to "See more", trip_path(trip.id), class: "button-perso-2" %></p></li>
-
           </div>
+
+          <div class="text-center">
+            <p><%= link_to "See more", trip_path(trip.id), class: "button-perso-2" %></p>
+          </div>
+
+
         </div>
         <% end %>
     </div>
