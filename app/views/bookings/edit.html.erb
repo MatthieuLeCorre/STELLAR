@@ -1,0 +1,9 @@
+<h3>Modify your space experiences</h3>
+
+<%= simple_form_for [@booking] do |f| %>
+  <%= f.input :name, placeholder: "Add name" %>
+  <%= f.input :start_date, as: :date, html5:true, required: true, prompt: "What's your start date"%>
+  <%= f.input :end_date, as: :date, html5:true, required: true, prompt: "What's your end date"%>
+  <%= f.input :price, placeholder: "Add price" %>
+  <%= f.submit class:"btn btn-flat" %>
+<% end %>

@@ -21,28 +21,30 @@ class TripsController < ApplicationController
 
   def create
     @trip = Trip.new(trip_params)
+    @trip.user_id = current_user.id
     @trip.save
     #authorize @trip
     if @trip.save
-      redirect_to trips_path
+      redirect_to dashboard_path
     else
       render :new
     end
   end
 
   def edit
-    # @trip = Trip.find(params[:id])
+    @trip = Trip.find(params[:id])
   end
 
   def update
-    # @trip.update(trip_params)
-    # redirect_to trip_path(@trip)
+    @trip = Trip.find(params[:id])
+    @trip.update(trip_params)
+    redirect_to dashboard_path
   end
 
   def destroy
     @trip = Trip.find(params[:id])
     @trip.destroy
-    redirect_to trips_path
+    redirect_to dashboard_path
   end
 
   private
