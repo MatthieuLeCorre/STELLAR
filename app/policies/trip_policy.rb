@@ -18,6 +18,6 @@ class TripPolicy < ApplicationPolicy
   end
 
   def destroy?
-    record.user_id == user.id
+    record.user_id == user.idp
   end
 end
