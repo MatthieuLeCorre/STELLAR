@@ -15,7 +15,9 @@
     <div class="page-container">
       <%= render "shared/navbar" %>
       <%= render 'shared/flashes' %>
-      <%= yield %>
+      <div class="sticky-footer">
+        <%= yield %>
+      </div>
       <%= render "shared/footer" %>
     </div>
   </body>

@@ -1,52 +1,24 @@
-.footer-top {
+.footer {
+  background: black;
+  height: 300px;
   color: white;
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  padding-top: 10px;
-}
-
-.foooot {
-  background-color: rgb(91, 69, 214);
-  bottom: 0;
-  width: 100%;
-}
-
-.footer-info {
-  margin-top: 10px;
-  display: grid;
-  align-items: center;
-  justify-content: center;
-}
-
-.information {
-  list-style: none;
-  padding: 0px;
-}
-
-.information li {
-  list-style: none;
-  padding-top: 12px;
-}
-
-.footer-bottom {
   display: flex;
-  align-items: center;
   justify-content: center;
-  height: 50px;
-  padding: 0px 50px;
-  color: rgba(0,0,0,0.3);
-  border-top: 1px solid black;
+  align-items: center;
+}
 
+.footer-center {
+  text-align: center;
 }
 
 .footer-links {
   display: flex;
-  align-items: center;
+  justify-content: center;
 }
 
 .footer-links a {
-  color: black;
-  opacity: 0.6;
+  color: white;
+  opacity: 0.75;
   text-decoration: none;
   font-size: 24px;
   padding: 0px 10px;
@@ -55,41 +27,17 @@
 .footer-links a:hover {
   opacity: 1;
 }
-.footer-bottom .fa-heart {
+.footer .fa-heart {
   color: #D23333;
 }
 
-// Smallest device
-@media (min-width: 100px) and (max-width: 575px) {
-  .cards {
-    grid-template-columns: 1fr;
-  }
+.sticky-footer {
+    min-height: calc(100vh - 394px); //300px footer + 94px navbar
 }
 
-// Small devices (landscape phones, 576px and up)
-@media (min-width: 576px) {
-  .cards {
-    grid-template-columns: 1fr;
-  }
-}
 
-// Medium devices (tablets, 768px and up)
-@media (min-width: 768px) {
-  .cards {
-    grid-template-columns: 1fr 1fr;
-  }
-}
-
-// Large devices (desktops, 992px and up)
-@media (min-width: 992px) {
-  .cards {
-    grid-template-columns: 1fr 1fr 1fr;
-  }
-}
-
-// Extra large devices (large desktops, 1200px and up)
-@media (min-width: 1200px) {
-  .cards {
-    grid-template-columns: 1fr 1fr 1fr;
-  }
+.footer-copyright {
+  text-align:center;
+  font-size:16px;
+  margin-top:15px;
 }
