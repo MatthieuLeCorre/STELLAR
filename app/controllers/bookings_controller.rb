@@ -31,11 +31,12 @@ class BookingsController < ApplicationController
 
   def edit
     @booking = Booking.find(params[:id])
+    authorize @booking
   end
 
   def update
     @booking = Booking.find(params[:id])
-    # authorize @booking
+    authorize @booking
     @booking.update(booking_params)
     redirect_to dashboard_path
   end
@@ -48,11 +49,18 @@ class BookingsController < ApplicationController
   end
 
   def payment
-    @booking = Booking.find(params[:booking_id])
+    @booking = policy_scope(Booking).find(params[:booking_id])
+    authorize @booking
   end
   # regarder redirect to avec notice
 
   def payment_confirm
+    @booking = Booking.find(params[:booking_id])
+    @booking.paid = true
+    @booking.save
+    authorize @booking
+    flash[:notice] = 'Successfully booked!'
+    redirect_to dashboard_path
   end
 
   private
