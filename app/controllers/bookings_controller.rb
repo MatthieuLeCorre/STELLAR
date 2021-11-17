@@ -1,8 +1,8 @@
 class BookingsController < ApplicationController
 
-  def index
-    @bookings = policy_scope(Booking).order(created_at: :desc)
-  end
+  # def index
+  #   @bookings = policy_scope(Booking).order(created_at: :desc)
+  # end
 
   def show
     @booking = Booking.find(params[:id])
@@ -24,7 +24,7 @@ class BookingsController < ApplicationController
     @booking.trip = @trip
     @booking.user_id = @user.id
     @booking.save
-    redirect_to bookings_path(@trip)
+    redirect_to dashboard_path
   end
 
   def edit
