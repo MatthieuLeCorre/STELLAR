@@ -4,7 +4,6 @@ class TripPolicy < ApplicationPolicy
       scope.all
     end
   end
-
   def create?
     return true
   end
