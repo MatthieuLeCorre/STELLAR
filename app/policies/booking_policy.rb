@@ -17,7 +17,6 @@ class BookingPolicy < ApplicationPolicy
     record.user == user
   end
 
-
   def payment_confirm?
     record.user == user
   end
