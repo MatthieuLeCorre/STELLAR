@@ -1,7 +1,8 @@
 class TripsController < ApplicationController
   def index
     if params[:query].present?
-      @trips = Trip.where(planet: params[:query].capitalize)
+      @trips = policy_scope(Trip).where(planet: params[:query].capitalize)
+
     else
       @trips = policy_scope(Trip).order(created_at: :desc)
     end
