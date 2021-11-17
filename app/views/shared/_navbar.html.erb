@@ -13,7 +13,7 @@
       </li>
       <% if current_user %>
         <li class="nav-item">
-          <li><%= link_to "My trips", bookings_path, class:"nav-link" %></li>
+          <li><%= link_to "Dashboard", dashboard_path, class:"nav-link" %></li>
         </li>
       <% end %>
       <li class="nav-item dropdown">
@@ -26,7 +26,6 @@
         <% end  %>
         <ul class="dropdown-menu dropdown-menu-dark dropdown-menu-lg-end" aria-labelledby="navbarDropdown">
           <% if current_user %>
-            <li><a class="dropdown-item" href="#">My Profile</a></li>
             <li><%= link_to "Logout", destroy_user_session_path, method: :delete, class:"dropdown-item" %></li>
           <% else %>
             <li><%= link_to "Login", new_user_session_path, class:"dropdown-item" %></li>
