@@ -4,25 +4,29 @@
       <a href=""><img src="<%= image_path('mastercard_logo.png') %>" alt="" style="width: 100px"></a>
       <a href=""><img src="<%= image_path('visa_logo.png') %>" alt="" style="width: 100px"></a>
       <a href=""><img src="<%= image_path('paypal_logo.png') %>" alt="" style="width: 100px"></a>
+      <a href=""><img src="<%= image_path('dogecoin_logo.png') %>" alt="" style="width: 100px"></a>
     </div>
     <div class="payment-informations">
       <h3>Card Name</h3>
-      <input type="text">
+      <input type="text" placeholder="John Doe">
     </div>
     <div class="d-flex align-items-center justify-content-between">
       <div class="payment-informations">
         <h3>Card Number</h3>
-        <input type="text">
+        <input type="text" placeholder="XXXX XXXX XXXX 9999">
       </div>
       <div class="payment-informations">
         <h3>CVV</h3>
-        <input type="text" placeholder="···">
+        <input type="text" placeholder="999">
       </div>
     </div>
     <div class="payment-informations">
       <h3>Expiration date</h3>
       <input type="text" placeholder="MM/YY">
     </div>
-    <%= link_to "Confirm payment", booking_path(@booking), class:"btn btn-flat" %>
+    <div class="payment-informations total-price">
+      <h3>Total price: <%= @booking.price %>$</h3>
+    </div>
+    <%= link_to "Pay #{@booking.price}$", booking_payment_success_path(@booking), class:"btn btn-flat" %>
   </div>
 </div>

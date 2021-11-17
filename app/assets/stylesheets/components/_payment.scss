@@ -15,12 +15,6 @@
   margin: 8px 0;
 }
 
-#mastercard {
-  width: 100px;
-  height: 100px;
-  background-size: cover;
-}
-
 .payment-logos {
   margin-bottom: 16px;
 }
@@ -28,4 +22,12 @@
 .payment-container .btn {
   margin-top: 16px;
   display: block;
+}
+
+.payment-container .btn {
+  font-size: 20px;
+}
+
+.total-price {
+  margin: 16px 0;
 }
