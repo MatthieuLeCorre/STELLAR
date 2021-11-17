@@ -7,4 +7,11 @@ class PagesController < ApplicationController
     @trips_good = @trips_to_sort.last(3)
   end
 
+  def dashboard
+    @trips = Trip.where(user_id: current_user.id)
+    @bookings = Booking.where(user_id: current_user.id)
+    # @bookings = policy_scope(Booking).order(created_at: :desc)
+    # @trips = policy_scope(Trip).order(created_at: :desc)
+  end
+
 end
