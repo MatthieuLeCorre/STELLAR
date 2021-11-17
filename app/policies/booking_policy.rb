@@ -9,6 +9,14 @@ class BookingPolicy < ApplicationPolicy
     return true
   end
 
+  def payment?
+    record.user == user
+  end
+
+  def payment_confirm?
+    record.user == user
+  end
+
   # def update?
   #   record.user == user
   #   # - record: the trip passed to the `authorize` method in controller
