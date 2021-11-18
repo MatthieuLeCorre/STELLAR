@@ -1,0 +1,42 @@
+.container-login {
+  padding: 55px;
+  text-align: center;
+}
+
+.cards-login {
+  width: 100%;
+  padding: 15px;
+  overflow: hidden;
+  background: white;
+  box-shadow: 0 0 12px rgba(0,0,0,0.3);
+  border-radius: $border-radius;
+}
+
+.h2 {
+  font-size: 26px;
+  font-weight: bold;
+}
+
+.info-log {
+  text-align: left;
+  padding: 25px;
+}
+
+.form-actions input {
+  color:white;
+}
+
+.devise_shared_links a {
+  text-decoration: none;
+  color:black;
+}
+
+
+.devise_shared_links {
+  text-align: center;
+  padding-top: 15px;
+}
+
+.devise_shared_links a:hover {
+  text-decoration: underline;
+}

@@ -23,6 +23,8 @@ class ApplicationController < ActionController::Base
   #   redirect_to(root_path)
   # ends
 
+
+
   private
 
   def skip_pundit?

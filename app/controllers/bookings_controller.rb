@@ -31,14 +31,21 @@ class BookingsController < ApplicationController
 
   def edit
     @booking = Booking.find(params[:id])
+    @trip = Trip.find(@booking.trip_id)
     authorize @booking
   end
 
   def update
     @booking = Booking.find(params[:id])
+    @trip = Trip.find(@booking.trip_id)
     authorize @booking
+    @booking.price = (((@booking.end_date - @booking.start_date) * @trip.price_per_night) + @trip.transport_price) * @booking.number_of_passengers
     @booking.update(booking_params)
-    redirect_to dashboard_path
+    if @booking.save
+      redirect_to booking_payment_path(@booking)
+    else
+      render :edit
+    end
   end
 
   def destroy
@@ -57,6 +64,7 @@ class BookingsController < ApplicationController
   def payment_confirm
     @booking = Booking.find(params[:booking_id])
     @booking.paid = true
+    @booking.paid_price = @booking.price
     @booking.save
     authorize @booking
     flash[:notice] = 'Successfully booked!'

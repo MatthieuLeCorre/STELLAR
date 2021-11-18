@@ -1,3 +1,28 @@
+.btn-primary {
+  background-color: black;
+  padding: 8px 24px;
+  text-align: center;
+  width: 25vw;
+  border-color: black;
+  margin: auto;
+  color: white;
+  border-radius: $border-radius;
+}
+
+.btn-primary-small {
+  background-color: black;
+  color: white;
+  padding: 8px 24px;
+  text-align: center;
+  margin: auto;
+  border-radius: $border-radius;
+}
+
+.btn-secondary:hover {
+  border: solid 1px white;
+  color: black;
+}
+
 .btn-ghost {
   color: #4A4A4A;
   border: 1px solid #4A4A4A;

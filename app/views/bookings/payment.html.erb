@@ -25,8 +25,18 @@
       <input type="text" placeholder="MM/YY">
     </div>
     <div class="payment-informations total-price">
-      <h3>Total price: <%= @booking.price %>$</h3>
+    <% if @booking.paid %>
+      <h3>Total price: <%= currency(@booking.price) %></h3>
+      <h3>Already paid: <%= currency(@booking.paid_price) %></h3>
+      <h3>Payment: <%= currency(@booking.price - @booking.paid_price) %></h3>
+    <% else %>
+      <h3>Total price: <%= currency(@booking.price) %></h3>
+    <% end %>
     </div>
-    <%= link_to "Pay #{@booking.price}$", booking_payment_success_path(@booking), class:"btn btn-flat" %>
+    <% if @booking.paid %>
+      <%= link_to "Pay #{currency(@booking.price - @booking.paid_price)}$", booking_payment_success_path(@booking), class:"btn btn-flat" %>
+    <% else %>
+      <%= link_to "Pay #{currency(@booking.price)}", booking_payment_success_path(@booking), class:"btn btn-flat" %>
+    <% end %>
   </div>
 </div>

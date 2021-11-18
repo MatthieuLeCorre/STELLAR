@@ -13,6 +13,12 @@ class TripsController < ApplicationController
     end
     if params[:spaceship].present?
       @trips = Trip.search_spaceship(params[:spaceship])
+
+    @markers = @trips.geocoded.map do |flat|
+      {
+        lat: flat.latitude,
+        lng: flat.longitude
+      }
     end
   end
 
@@ -66,6 +72,6 @@ class TripsController < ApplicationController
   def trip_params
     params.require(:trip).permit(:planet, :gravity, :exit, :price_per_night,
                                  :transport_price, :spaceship, :description,
-                                 :survival, :photo)
+                                 :survival, :launch_address, :photo)
   end
 end

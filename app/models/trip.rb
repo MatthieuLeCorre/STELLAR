@@ -1,4 +1,6 @@
 class Trip < ApplicationRecord
+  geocoded_by :launch_address
+
   validates :planet, presence: true
   validates :gravity, presence: true
   validates :price_per_night, presence: true
@@ -11,6 +13,9 @@ class Trip < ApplicationRecord
   validates :survival, presence: true,
             numericality: { only_integer: true, greater_than_or_equal_to: 0,
             less_than_or_equal_to: 100 }
+  validates :launch_address, presence: true
+
+  after_validation :geocode, if: :will_save_change_to_launch_address?
 
   has_many :bookings
   has_many :users, through: :bookings
