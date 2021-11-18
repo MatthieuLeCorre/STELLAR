@@ -1,0 +1,12 @@
+<%= link_to trip_path(trip.id) do%>
+  <% if trip.photo.attached? == false %>
+    <%= image_tag("https://images.theconversation.com/files/392339/original/file-20210329-17-1vm95zi.jpg?ixlib=rb-1.1.0&q=45&auto=format&w=1200&h=675.0&fit=crop", class: "img-card", style:"width: 100%; object-fit: cover") %>
+  <% else %>
+    <%= cl_image_tag trip.photo.key, class: "img-card" %>
+  <% end %>
+  <h3>⭐<strong><%= trip.rating %>/5</strong> (<%= trip.number_of_comments %>)</h3>
+  <div>
+    <h3><%= trip.planet %></h3>
+    <h3><strong><%= currency(trip.price_per_night) %></strong>/night</h3>
+  </div>
+<% end %>

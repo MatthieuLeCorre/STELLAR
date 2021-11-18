@@ -19,10 +19,15 @@
                 <div class="d-flex justify-content-between align-items-center">
                   <div class="planet-description">
                     <h1><%= trip.planet %></h1>
-                    <h2><strong>"</strong><%= trip.description %><strong>"</strong></h2>
+                    <h3>"<%= trip.description %>"</h3>
                   </div>
-                  <div>
-                    <h2><strong>Rating 4/5</strong></h2>
+                  <div class="ml-2">
+                    <% if trip.rating.nil? || trip.number_of_comments.nil? %>
+                      <h2 style="text-align: right">🧑‍🚀 Become the first traveler</h2>
+                    <% else  %>
+                      <h2>⭐<%= trip.rating %>/5</h2>
+                      <p>(<%= trip.number_of_comments %> comments)</p>
+                    <% end  %>
                   </div>
                 </div>
                 <div class="product-logos d-flex justify-content-between">
