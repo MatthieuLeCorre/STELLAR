@@ -3,7 +3,7 @@
   background: black;
   padding: 15px 30px;
   position: sticky;
-  width: 100%;
+  width: 100vw;
   z-index: 2;
   top: 0;
 }
@@ -23,8 +23,9 @@
 .navbar a {
   padding: 12px;
   color: white;
-  font-size: 24px;
+  font-size: 16px;
   margin-bottom: 0px;
+  margin-right: 15px;
 }
 
 .navbar-brand {
@@ -39,4 +40,26 @@
 .dropdown .btn {
   padding: 0px 6px;
   margin-left : 8px;
+  border: solid, 1px, white;
+}
+
+.navbar a{
+  border: solid, 1px, white;
+  color: white;
+}
+
+
+.dropdown-item {
+    color: black;
+    font-size: 16px;
+    margin-bottom: 0px;
+    margin-right: 15px;
+}
+
+
+.dropdown-menu {
+    background-color: black;
+    color: white;
+    border: solid 2px;
+    border-color: (rgb(118, 118, 118));
 }
