@@ -18,52 +18,51 @@
           <div class="card-product-infos d-flex flex-column justify-content-between flex-fill">
               <div class="d-flex justify-content-between align-items-center">
                 <div class="planet-description">
-                  <h1><strong class="violet" >Planet:</strong> <%= trip.planet %></h1>
+                  <h1><%= trip.planet %></h1>
                   <h2><strong>"</strong><%= trip.description %><strong>"</strong></h2>
                 </div>
                 <div>
-                  <h2><strong><%= currency(trip.price_per_night) %></strong>/night</h2>
-                  <h2><strong><%= currency(trip.transport_price) %></strong>/transport</h2>
+                  <h2><strong>Rating 4/5</strong></h2>
                 </div>
               </div>
-              <div class="product-logos">
-                <div class="d-flex justify-content-between align-items-center">
-                  <div class="d-flex flex-column align-items-center">
-                    <img src="<%= image_path('astronaut.png') %>" style="height: 30px; width: 30px">
-                    <p><strong>Extra-vehicular activities</strong></p>
-                  </div>
-                  <div class="d-flex flex-column align-items-center">
-                    <% if trip.gravity.downcase == "weak" || trip.gravity.downcase == "very weak" %>
-                      <img src="<%= image_path('superman-flying.png') %>" style="height: 30px; width: 30px">
-                    <% elsif trip.gravity.downcase == "average" %>
-                      <img src="<%= image_path('relaxing-walk.png') %>" style="height: 30px; width: 30px">
-                    <% else %>
-                      <img src="<%= image_path('paratrooper-falling-silhouette.png') %>" style="height: 30px; width: 30px">
-                    <% end %>
-                    <p><strong>Gravity</strong> </p>
-                    <p><%= trip.gravity %></p>
-                  </div>
+              <div class="product-logos d-flex justify-content-between">
+                <div class="cards-icons flex-fill">
+                    <div class="d-flex flex-column align-items-center">
+                      <img src="<%= image_path('astronaut.png') %>" style="height: 30px; width: 30px">
+                      <p><strong>Extra-vehicular activities</strong></p>
+                    </div>
+                    <div class="d-flex flex-column align-items-center">
+                      <% if trip.gravity.downcase == "weak" || trip.gravity.downcase == "very weak" %>
+                        <img src="<%= image_path('superman-flying.png') %>" style="height: 30px; width: 30px">
+                      <% elsif trip.gravity.downcase == "average" %>
+                        <img src="<%= image_path('relaxing-walk.png') %>" style="height: 30px; width: 30px">
+                      <% else %>
+                        <img src="<%= image_path('paratrooper-falling-silhouette.png') %>" style="height: 30px; width: 30px">
+                      <% end %>
+                      <p><strong>Gravity</strong> </p>
+                    </div>
+                    <div class="d-flex flex-column align-items-center">
+                      <% if trip.spaceship.match?(/Space X/) || trip.spaceship.match?(/NASA/)  %>
+                        <img src="<%= image_path('good-spaceship.png') %>" style="height: 30px; width: 30px">
+                      <% else %>
+                        <img src="<%= image_path('bad-spaceship.png') %>" style="height: 30px; width: 30px">
+                      <% end %>
+                      <p><strong>Spaceship</strong></p>
+                    </div>
+                    <div class="d-flex flex-column align-items-center survival-rate">
+                      <% if trip.survival < 30 %>
+                        <h1 style="color: rgb(220, 52, 68)"><strong></strong> <%= trip.survival %>%</h1>
+                      <% elsif trip.survival >= 30 && trip.survival < 70  %>
+                        <h1 style="color: rgb(255, 193, 6)"><strong></strong> <%= trip.survival %>%</h1>
+                      <% else %>
+                        <h1 style="color: rgb(15, 162, 36)"><strong></strong> <%= trip.survival %>%</h1>
+                      <% end %>
+                      <p><strong>Survival</strong></p>
+                    </div>
                 </div>
-                <div class="d-flex justify-content-between align-items-center">
-                  <div class="d-flex flex-column align-items-center">
-                    <% if trip.spaceship.match?(/Space X/) || trip.spaceship.match?(/NASA/)  %>
-                      <img src="<%= image_path('good-spaceship.png') %>" style="height: 30px; width: 30px">
-                    <% else %>
-                      <img src="<%= image_path('bad-spaceship.png') %>" style="height: 30px; width: 30px">
-                    <% end %>
-                    <p><strong>Spaceship</strong></p>
-                    <p> <%= trip.spaceship %></p>
-                  </div>
-                  <div class="d-flex flex-column align-items-center survival-rate">
-                    <% if trip.survival < 30 %>
-                      <h1 style="color: rgb(220, 52, 68)"><strong></strong> <%= trip.survival %>%</h1>
-                    <% elsif trip.survival >= 30 && trip.survival < 70  %>
-                      <h1 style="color: rgb(255, 193, 6)"><strong></strong> <%= trip.survival %>%</h1>
-                    <% else %>
-                      <h1 style="color: rgb(15, 162, 36)"><strong></strong> <%= trip.survival %>%</h1>
-                    <% end %>
-                    <p><strong>Survival</strong></p>
-                  </div>
+                <div class="d-flex flex-column align-items-end justify-content-end">
+                  <p>Price per night</p>
+                  <h1><strong style="font-size: 2rem;"><%= currency(trip.price_per_night) %></strong></h1>
                 </div>
               </div>
               <%# <p><%= link_to "See more", trip_path(trip.id), class: "button-perso-2" %>
