@@ -1,12 +1,12 @@
 class TripsController < ApplicationController
   def index
-    if params[:spaceship].present?
-      @trips = Trip.search_spaceship(params[:spaceship])
-    end
     if params[:query].present?
       @trips = policy_scope(Trip).search_planet_and_description(params[:query])
     else
       @trips = policy_scope(Trip).order(created_at: :desc)
+    end
+    if params[:spaceship].present?
+      @trips = Trip.search_spaceship(params[:spaceship])
     end
     if params[:survival].present?
       @trips = @trips.select { |trip| trip.survival >= params[:survival].to_i }
