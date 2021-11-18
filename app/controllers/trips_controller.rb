@@ -1,5 +1,8 @@
 class TripsController < ApplicationController
   def index
+    if params[:spaceship].present?
+      @trips = Trip.search_spaceship(params[:spaceship])
+    end
     if params[:query].present?
       @trips = policy_scope(Trip).search_planet_and_description(params[:query])
     else
@@ -11,9 +14,6 @@ class TripsController < ApplicationController
     if params[:price_per_night].present?
     @trips = @trips.select { |trip| trip.price_per_night <= params[:price_per_night].to_i }
     end
-    if params[:spaceship].present?
-      @trips = Trip.search_spaceship(params[:spaceship])
-
     @markers = @trips.geocoded.map do |flat|
       {
         lat: flat.latitude,
