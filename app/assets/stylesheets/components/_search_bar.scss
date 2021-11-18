@@ -1,4 +1,11 @@
+.form-control {
+  width: 250px;
+  border-radius: 5px;
+}
+
 .search-form-control {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
   position: relative;
 }
 
@@ -23,7 +30,7 @@
 
 .search-container {
   margin-top: 20px;
-  padding: 0 100px;
+  padding: 50px
 }
 
 .index-1 {
