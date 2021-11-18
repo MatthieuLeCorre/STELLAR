@@ -1,6 +1,8 @@
-<%= render "shared/search_bar" %>
 
-<div class="container d-flex">
+<div>
+<%= render "shared/search_bar" %>
+</div>
+<div class="d-flex">
   <div class="flex-fill">
       <div class="title">
         <h2 class="text-center"> All the best trips ! </h2>
@@ -8,23 +10,63 @@
       <div class="cards-trip">
         <% @trips.each do |trip| %>
         <div class="card-product">
-          <%= link_to trip_path(trip.id) do %>
             <% if trip.photo.attached? == false %>
               <%= image_tag("https://images.theconversation.com/files/392339/original/file-20210329-17-1vm95zi.jpg?ixlib=rb-1.1.0&q=45&auto=format&w=1200&h=675.0&fit=crop" ) %>
             <% else %>
               <%= image_tag(cl_image_path trip.photo.key, height: 200, width: 430 ) %>
             <% end %>
-          <% end %>
-          <div class="card-product-infos">
-            <h3><strong class="violet" >Planet:</strong> <%= trip.planet %></h3>
-            <h6><strong class="violet">Gravity: </strong> <%= trip.gravity%></h6>
-            <p><strong>Extra-vehicular activities: </strong><%= trip.exit %></p>
-            <p><strong>Price per night: </strong><%= currency(trip.price_per_night) %></p>
-            <p><strong>Transport price:</strong> <%= currency(trip.transport_price) %></p>
-            <p><strong>Spaceship:</strong> <%= trip.spaceship %></p>
-            <p><strong>"</strong><%= trip.description %><strong>"</strong></p>
-            <br>
-            <p><%= link_to "See more", trip_path(trip.id), class: "button-perso-2" %></p>
+          <div class="card-product-infos d-flex flex-column justify-content-between flex-fill">
+              <div class="d-flex justify-content-between align-items-center">
+                <div class="planet-description">
+                  <h1><strong class="violet" >Planet:</strong> <%= trip.planet %></h1>
+                  <h2><strong>"</strong><%= trip.description %><strong>"</strong></h2>
+                </div>
+                <div>
+                  <h2><strong><%= currency(trip.price_per_night) %></strong>/night</h2>
+                  <h2><strong><%= currency(trip.transport_price) %></strong>/transport</h2>
+                </div>
+              </div>
+              <div class="product-logos">
+                <div class="d-flex justify-content-between align-items-center">
+                  <div class="d-flex flex-column align-items-center">
+                    <img src="<%= image_path('astronaut.png') %>" style="height: 30px; width: 30px">
+                    <p><strong>Extra-vehicular activities</strong></p>
+                  </div>
+                  <div class="d-flex flex-column align-items-center">
+                    <% if trip.gravity.downcase == "weak" || trip.gravity.downcase == "very weak" %>
+                      <img src="<%= image_path('superman-flying.png') %>" style="height: 30px; width: 30px">
+                    <% elsif trip.gravity.downcase == "average" %>
+                      <img src="<%= image_path('relaxing-walk.png') %>" style="height: 30px; width: 30px">
+                    <% else %>
+                      <img src="<%= image_path('paratrooper-falling-silhouette.png') %>" style="height: 30px; width: 30px">
+                    <% end %>
+                    <p><strong>Gravity</strong> </p>
+                    <p><%= trip.gravity %></p>
+                  </div>
+                </div>
+                <div class="d-flex justify-content-between align-items-center">
+                  <div class="d-flex flex-column align-items-center">
+                    <% if trip.spaceship.match?(/Space X/) || trip.spaceship.match?(/NASA/)  %>
+                      <img src="<%= image_path('good-spaceship.png') %>" style="height: 30px; width: 30px">
+                    <% else %>
+                      <img src="<%= image_path('bad-spaceship.png') %>" style="height: 30px; width: 30px">
+                    <% end %>
+                    <p><strong>Spaceship</strong></p>
+                    <p> <%= trip.spaceship %></p>
+                  </div>
+                  <div class="d-flex flex-column align-items-center survival-rate">
+                    <% if trip.survival < 30 %>
+                      <h1 style="color: rgb(220, 52, 68)"><strong></strong> <%= trip.survival %>%</h1>
+                    <% elsif trip.survival >= 30 && trip.survival < 70  %>
+                      <h1 style="color: rgb(255, 193, 6)"><strong></strong> <%= trip.survival %>%</h1>
+                    <% else %>
+                      <h1 style="color: rgb(15, 162, 36)"><strong></strong> <%= trip.survival %>%</h1>
+                    <% end %>
+                    <p><strong>Survival</strong></p>
+                  </div>
+                </div>
+              </div>
+              <%# <p><%= link_to "See more", trip_path(trip.id), class: "button-perso-2" %>
           </div>
         </div>
         <% end %>
@@ -34,7 +76,7 @@
     <div class="title">
       <h2 class="text-center"> 🚀 Launching sites </h2>
     </div>
-    <div id="index-map"style="width: 500px; height: 100vh;"
+    <div id="index-map" style="width: 700px; height: 100vh;"
       data-controller="mapbox"
       data-mapbox-markers-value="<%= @markers.to_json %>"
       data-mapbox-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">

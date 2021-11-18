@@ -11,28 +11,22 @@
   top: 0px;
 }
 
-.link-photo {
-  display: block;
-}
-
-.img-card-index {
-  height: 100%;
-  width: 120px;
-  object-fit: cover;
-}
-
 .card-product {
+  border-radius: 5px;
+  margin-left: 20px;
   overflow: hidden;
-  height: 120px;
+  height: 300px;
   background: white;
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
   display: flex;
-  align-items: center;
+  strong {
+    padding: 0;
+  }
 }
 
 .card-product img {
   height: 100%;
-  width: 120px;
+  width: 300px;
   object-fit: cover;
 }
 
@@ -50,81 +44,46 @@
   margin-top: 8px;
 }
 
-.card-product .card-product-infos {
-  padding: 16px;
+.card-product-infos {
+  padding: 24px;
+}
+
+.survival-rate h1 {
+  margin: 0;
+}
+
+.product-logos {
+  padding: 16px 0;
 }
 
 
+.button-perso-2 {
+  padding-left: 100px;
+  padding-right: 100px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  width: 500px;
+  background-color: rgb(91, 69, 214);
+  color: white;
+  text-decoration: none;
+  border-radius: 3px;
+  margin-top: 15px;
+  &:hover {
+    color: white;
+    background-color: rgb(57, 47, 116);
+    opacity: 1;
+  }
+}
 
+.show-icons {
+  height: 50px;
+  width: 50px;
+}
 
+.planet-description {
+  margin-right: 16px
+}
 
-
-
-// .card-trip-index {
-//   position: relative;
-//   padding: 0px;
-//   overflow: hidden;
-//   background: white;
-//   box-shadow: 0 0 12px rgba(0,0,0,0.3);
-//   height: 300px;
-//   width: 100%;
-//   border-radius: 5px;
-//   margin: 5px;
-//   justify-content: center;
-//   align-items: center;
-//     h2 {
-//     font-size: 14px;
-//     font-weight: bold;
-//     margin: 0;
-//     }
-
-//     p {
-//     font-size: 12px;
-//     opacity: 1;
-//     margin: 0;
-//     }
-//     img {
-//     height: 210px;
-//     width: 100%;
-//     object-fit: cover;
-//     }
-//     &:hover {
-//       box-shadow: 0 0 0 3px rgb(91, 69, 214);
-//       transition: all 300ms ease-in-out;
-//     }
-//   .ml-auto .p-2 {
-//     position: absolute;
-//     bottom: 0;
-//   }
-// }
-
-// h3 {
-//   color: rgb(91, 69, 214);
-// }
-
-// h6{
-//   color: rgb(91, 69, 214);
-// }
-
-// .button-perso-2 {
-//   padding-left: 100px;
-//   padding-right: 100px;
-//   padding-top: 10px;
-//   padding-bottom: 10px;
-//   width: 500px;
-//   background-color: rgb(91, 69, 214);
-//   color: white;
-//   text-decoration: none;
-//   border-radius: 3px;
-//   margin-top: 15px;
-//   &:hover {
-//     color: white;
-//     background-color: rgb(57, 47, 116);
-//     opacity: 1;
-//   }
-// }
-
-// .card-trip-infos-index {
-//   padding: 16px;
-//   height: 250px;
-// }
+//// color green : 0fa224, rgb(15, 162, 36)
+//// color orange : ffc106, rgb(255, 193, 6)
+//// color red : dc3444, rgb(220, 52, 68)
