@@ -22,8 +22,8 @@
                 <li><h3><strong class="violet" >Planet:</strong> <%= trip.planet %></h3></li>
                 <li><h6><strong class="violet">Gravity: </strong> <%= trip.gravity%></h6></li>
                 <li><p><strong>Extra-vehicular activities: </strong><%= trip.exit %></p></li>
-                <li><p><strong>Price per night: </strong><%= trip.price_per_night %>$</p></li>
-                <li><p><strong>Transport price:</strong> <%= trip.transport_price %>$</p></li>
+                <li><p><strong>Price per night: </strong><%= currency(trip.price_per_night) %></p></li>
+                <li><p><strong>Transport price:</strong> <%= currency(trip.transport_price) %></p></li>
                 <li><p><strong>Spaceship:</strong> <%= trip.spaceship %></p></li>
                 <li><p><strong>"</strong><%= trip.description %><strong>"</strong></p></li>
                 <br>

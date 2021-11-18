@@ -19,7 +19,7 @@
             <li><h3><%= booking.name %></h3></li>
             <li><p>Start date : <%= booking.start_date%></p></li>
             <li><p>End date : <%= booking.end_date %></p></li>
-            <li><p>Price: <%= booking.price %>$</p></li>
+            <li><p>Price: <%= currency(booking.price) %></p></li>
           </div>
         </div>
       <% end %>
