@@ -5,7 +5,7 @@
   overflow: hidden;
   background: white;
   box-shadow: 0 0 12px rgba(0,0,0,0.3);
-  height: 600px;
+  height: 750px;
   width: 450px;
   border-radius: 5px;
   margin: 5px;
@@ -47,7 +47,7 @@
     }
 }
 
-#price-per-person {
+.price-per-person {
   margin-top: 15px;
   margin-bottom: 15px;
   padding-left: 10px;
@@ -100,13 +100,13 @@
   text-decoration: none;
   // border: rgb(196, 196, 196) solid 1px;
   border-radius: 5px;
-  background-color: rgb(124, 106, 228);
+  background-color: rgb(91, 69, 214);
   color: white;
 }
 
 .normal:hover {
 
-  background-color: rgb(91, 69, 214);
+  background-color: rgb(68, 54, 150);
   color: white;
 
 }
@@ -118,6 +118,12 @@
 }
 
 #per-night {
+  font-size: 20px;
+  font-weight: bold;
+  color: rgb(91, 69, 214);
+}
+
+#per-night-2{
   font-size: 20px;
   font-weight: bold;
   color: rgb(91, 69, 214);
