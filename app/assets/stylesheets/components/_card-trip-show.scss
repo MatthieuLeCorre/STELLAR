@@ -9,18 +9,26 @@ li {
 
 .gras {
   font-weight: bold;
+
 }
 
 .violet {
+  color: rgb(91, 69, 214);
+  padding-left: 25px;
+
+}
+
+.trip-on {
   color: rgb(91, 69, 214);
 }
 
 .card-trip-show {
   padding: 0px;
+
   overflow: hidden;
   background: white;
   box-shadow: 0 0 12px rgba(0,0,0,0.3);
-  height: 700px;
+  height: 600px;
   width: 600px;
   border-radius: 5px;
   margin: 5px;
@@ -28,9 +36,9 @@ li {
   align-items: center;
 
     h3 {
-      padding-top: 15px;
-      padding-left: 15px;
-      color: rgb(91, 69, 214)
+
+      color: rgb(91, 69, 214);
+      padding-left: 40px;
     }
 
     h6 {
@@ -39,7 +47,7 @@ li {
 
     h2 {
       padding-top: 15px;
-      padding-left: 15px;
+      padding-left: 0px;
       font-size: 14px;
       font-weight: bold;
       margin: 0;
@@ -78,6 +86,11 @@ li {
     background-color: rgb(57, 47, 116);
     opacity: 1;
   }
+}
+
+#lien {
+  color:rgb(91, 69, 214);
+  font-size: 14px;
 }
 
 .card-trip-show-2  {

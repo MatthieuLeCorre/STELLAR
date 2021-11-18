@@ -45,7 +45,7 @@ ActiveRecord::Schema.define(version: 2021_11_18_111152) do
     t.integer "price"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "number_of_passengers"
+    t.integer "number_of_passengers", default: 2
     t.boolean "paid", default: false
     t.integer "paid_price", default: 0
     t.index ["trip_id"], name: "index_bookings_on_trip_id"
