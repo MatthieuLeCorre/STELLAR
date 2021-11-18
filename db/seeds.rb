@@ -6,6 +6,17 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+Booking.destroy_all
+Trip.destroy_all
+
+launch_address = ["Pacific Spaceport Complex, Alaska, USA",
+                  "Mid-Atlantic Regional paceport, Virginia, USA",
+                "Centre spatial guyanais,	Kourou, Guyane",
+              "Kennedy Space Center, Florida, USA",
+            "Satish Dhawan Space Centre, Sriharikota",
+          "Taiyuan Satellite Launch Center, Kelan, Xinzhou, Shanxi",
+        "Xichang Satellite Launch Center, Xichang, Liangshan, Sichuan"]
+
 trip1 = Trip.create({
 
   planet: "Mercury",
@@ -15,7 +26,8 @@ trip1 = Trip.create({
   transport_price: 8900,
   spaceship: "Space X Falcon 9",
   description: "Enjoy this trip on Mercury, one of the most beautiful planet of the Solar System !",
-  survival: 87
+  survival: 87,
+  launch_address: launch_address.sample
 })
 
 
@@ -27,7 +39,8 @@ trip2 = Trip.create({
   transport_price: 3600,
   spaceship: "NASA Orion Spacecraft",
   description: "Venus is so trendy right now ! Come visit this amazing telluric planet !",
-  survival: 55
+  survival: 55,
+  launch_address: launch_address.sample
 })
 
 trip3 = Trip.create({
@@ -38,7 +51,8 @@ trip3 = Trip.create({
   transport_price: 2000,
   spaceship: "NASA Atlantis Spacecraft",
   description: "The very famous red planet welcomes you ! Our 5 stars hotel will make your trip an incredible lifetime experience !",
-  survival: 95
+  survival: 95,
+  launch_address: launch_address.sample
 })
 
 trip4 = Trip.create({
@@ -49,7 +63,8 @@ trip4 = Trip.create({
   transport_price: 3300,
   spaceship: "Space X Falcon 9",
   description: "The Sheraton Jupiter is welcoming you on one of the hottest planet right now. Enjoy the beautiful view and Jupiter north pole cyclones !",
-  survival: 40
+  survival: 40,
+  launch_address: launch_address.sample
 })
 
 trip5 = Trip.create({
@@ -61,6 +76,7 @@ trip5 = Trip.create({
   spaceship: "Space X Falcon 9",
   description: "You need some warmth and you're not afraid of sun burns ? This trip is made for you ! ",
   survival: 17,
+  launch_address: launch_address.sample
 })
 
   trips6 = Trip.create({
@@ -72,6 +88,7 @@ trip5 = Trip.create({
   spaceship: 'Angara',
   description: 'Welcome to the neptune travel.',
   survival: 15,
+  launch_address: launch_address.sample
 })
 
 trips7 = Trip.create({
@@ -83,6 +100,7 @@ trips7 = Trip.create({
   spaceship: 'Starship SN15',
   description: '',
   survival: 78,
+  launch_address: launch_address.sample
 })
 
 trips8 = Trip.create({
@@ -92,4 +110,5 @@ trips8 = Trip.create({
   transport_price: '500',
   description: '',
   survival: 75,
+  launch_address: launch_address.sample
 })
