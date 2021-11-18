@@ -20,4 +20,22 @@ class Trip < ApplicationRecord
   has_many :bookings
   has_many :users, through: :bookings
   has_one_attached :photo
+
+  include PgSearch::Model
+  pg_search_scope :search_planet_and_description,
+    against: [ :planet, :description],
+    using: {
+      tsearch: { prefix: true }
+    }
+  pg_search_scope :search_survival,
+    against: [ :survival]
+
+  pg_search_scope :search_price_per_night,
+    against: [ :price_per_night]
+
+  pg_search_scope :search_spaceship,
+    against: [ :spaceship],
+    using: {
+      tsearch: { prefix: true }
+    }
 end
