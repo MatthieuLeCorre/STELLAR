@@ -1,8 +1,12 @@
 <%= render "shared/search_bar" %>
-
+<br>
+<h2 class="container trip-on gras"> Trip on <%= @trip.planet %> - <%= @trip.survival %> % chance of survival</h2>
+<p class= "container trip-on">Launch Adress: <a id="lien" href="#">14 rue Villa Gaudelet, Paris</a></p>
 <div class="container">
   <div class="title">
-        <h2 class="violet gras"> Trip on <%= @trip.planet %> - <%= @trip.price_per_night %> $ / per night</h2>
+
+<a href=""></a>
+
   </div>
   <div class="box">
     <div class="cards">
@@ -15,12 +19,11 @@
 
           <div>
           <br>
-            <li><h3><strong>Planet:</strong> <%= @trip.planet %></h3></li>
+            <li><h3 class="violet"><strong>Planet:</strong> <%= @trip.planet %></h3></li>
             <br>
             <li><p><strong class="violet">Gravity: </strong> <%= @trip.gravity%></p></li>
             <li><p><strong class="violet">Extra-vehicular activities: </strong><%= @trip.exit %></p></li>
-            <li><p><strong class="violet">Price per night: </strong><%= @trip.price_per_night %>$</p></li>
-            <li><p><strong class="violet">Transport price:</strong> <%= @trip.transport_price %>$</p></li>
+
             <li><p><strong class="violet">Spaceship:</strong> <%= @trip.spaceship %></p></li>
             <li><p><strong class="violet">Comment from agency: "</strong><%= @trip.description %><strong class="violet">"</strong></p></li>
             <li><p><strong class="violet">Chance of survival: </strong> <%= @trip.survival %> %</p></li>
@@ -29,13 +32,56 @@
     </div>
 
     <div class="cards">
-      <div class="card-trip-show-2">
+      <div class="card-show-booking">
         <div class="p-3 text-center">
-        <h3>Book your trip now!</h3>
+        <h1 class="book">Book your trip now!</h1>
+
+        <div class="container">
+          <div class="row justify-content-center">
+            <div class="col-sm-8 text-center">
+
+        <div class="form-container">
+          <div class="header">
+
+          </div>
+
+          <div class="flex-between">
+            <h3>Participants :</h3>
+            <br>
+            <div class="actions" data-controller="button" >
+              <a id="minus" class="normal" data-button-target="moins" data-action="click->button#minus">-</a>
+              <span id="counter" data-count="1" data-button-target="count"> 1 </span>
+
+              <a id="inc" class="normal" data-button-target="plus" data-action="click->button#plus">+</a>
+
+
+              <br>
+              <br>
+
+              <div id="price-per-person" >
+              <span id="per-night" data-button-target="price"> <%= @trip.price_per_night %></span><span> $ per night</span>
+              <div id="transparent" data-button-target="fixedprice"><%= @trip.price_per_night %></div>
+
+              </div>
+            </div>
+          </div>
+
+
+
+
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+
+        <br>
+
         <%= simple_form_for [@trip, @booking] do |f| %>
           <%= f.input :start_date, as: :date, html5:true, required: true, prompt: "What's your start date"%>
           <%= f.input :end_date, as: :date, html5:true, required: true, prompt: "What's your end date"%>
-          <%= f.input :number_of_passengers, placeholder: "Number of passengers" %>
+          <br>
           <%= f.submit class:"button-show" %>
         <% end %>
         </div>
