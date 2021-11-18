@@ -1,12 +1,21 @@
 <div class="container">
   <ul>
     <div class="title-index">
-      <h3><b>Your current bookings</h3></b>
+      <h3><b>Experiences</h3></b>
     </div>
 
     <div class="grid-index">
       <% @bookings.each do |booking| %>
         <div class="card-index card-dashboard">
+
+          <div class="icone-border">
+            <% if policy(booking).destroy? %>
+              <%= link_to booking_path(booking), method: :delete, data: { confirm: "Are you sure?" } do %>
+                <i class="far fa-trash-alt icone-delete"></i>
+              <% end %>
+            <% end %>
+          </div>
+
           <%= link_to booking_path(booking.id) do %>
               <% if booking.trip.photo.attached? == false %>
                 <%= image_tag("https://images.theconversation.com/files/392339/original/file-20210329-17-1vm95zi.jpg?ixlib=rb-1.1.0&q=45&auto=format&w=1200&h=675.0&fit=crop", class: "img-card img-dashboard") %>
@@ -16,18 +25,17 @@
             <% end %>
           <div class="card-infos">
             <li><h3><%= booking.name %></h3></li>
+            <%= link_to edit_booking_path(booking) do %>
+              <i class="far fa-edit"></i>
+            <% end %>
             <li><p>Start date : <%= booking.start_date%></p></li>
             <li><p>End date : <%= booking.end_date %></p></li>
             <li><p>Price: <%= currency(booking.price) %></p></li>
             <li><p>Payment: <%= currency(booking.paid_price) %></p></li>
             <br>
-            <li><p><%= link_to "See more", booking_path(booking.id), class: "button-perso-2" %></p></li>
-          </div>
-          <div class="d-flex flex-column">
-            <% if policy(booking).destroy? %>
-              <%= link_to "Cancel your booking", booking_path(booking), method: :delete, class:"button-dashboard-2", data: { confirm: "Are you sure?" } %>
-            <% end %>
-            <%= link_to "Modify your booking", edit_booking_path(booking), class:"button-dashboard-2" %>
+            <div class="text-center">
+              <%= link_to "See more", booking_path(booking.id), class: "btn-primary-small" %>
+            </div>
           </div>
         </div>
       <% end %>

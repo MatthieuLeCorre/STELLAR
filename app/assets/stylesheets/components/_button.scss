@@ -16,7 +16,19 @@
   text-align: center;
   margin: auto;
   border-radius: $border-radius;
+  text-decoration: none;
 }
+
+.btn-primary-small:hover {
+  background-color: black;
+  color: white;
+  padding: 8px 24px;
+  text-align: center;
+  margin: auto;
+  border-radius: $border-radius;
+  text-decoration: none;
+}
+
 
 .btn-secondary:hover {
   border: solid 1px white;
