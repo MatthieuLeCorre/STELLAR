@@ -14,10 +14,11 @@ class TripsController < ApplicationController
     if params[:price_per_night].present?
     @trips = @trips.select { |trip| trip.price_per_night <= params[:price_per_night].to_i }
     end
-    @markers = @trips.geocoded.map do |flat|
+    @markers = @trips.geocoded.map do |trip|
       {
-        lat: flat.latitude,
-        lng: flat.longitude
+        lat: trip.latitude,
+        lng: trip.longitude,
+        info_window: render_to_string(partial: "info_window", locals: { trip: trip })
       }
     end
   end
