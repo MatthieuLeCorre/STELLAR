@@ -7,6 +7,7 @@
     <div class="grid-index">
       <% @bookings.each do |booking| %>
         <div class="card-index card-dashboard">
+
           <div class="icone-border">
             <% if policy(booking).destroy? %>
               <%= link_to booking_path(booking), method: :delete, data: { confirm: "Are you sure?" } do %>
