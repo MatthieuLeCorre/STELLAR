@@ -8,91 +8,104 @@
 <a href=""></a>
 
   </div>
-  <div class="box">
-    <div class="cards">
-      <div class="card-trip-show">
-        <% if @trip.photo.attached? == false %>
-          <%= image_tag("https://images.theconversation.com/files/392339/original/file-20210329-17-1vm95zi.jpg?ixlib=rb-1.1.0&q=45&auto=format&w=1200&h=675.0&fit=crop", class: "img-card") %>
-          <% else %>
-          <%= cl_image_tag @trip.photo.key, class: "img-card" %>
-        <% end %>
+    <div class="box">
+      <div class="cards">
+        <div class="card-trip-show">
+          <% if @trip.photo.attached? == false %>
+            <%= image_tag("https://images.theconversation.com/files/392339/original/file-20210329-17-1vm95zi.jpg?ixlib=rb-1.1.0&q=45&auto=format&w=1200&h=675.0&fit=crop", class: "img-card") %>
+            <% else %>
+            <%= cl_image_tag @trip.photo.key, class: "img-card" %>
+          <% end %>
 
-          <div>
-          <br>
-            <li><h3 class="violet"><strong>Planet:</strong> <%= @trip.planet %></h3></li>
+            <div>
             <br>
-            <li><p><strong class="violet">Gravity: </strong> <%= @trip.gravity%></p></li>
-            <li><p><strong class="violet">Extra-vehicular activities: </strong><%= @trip.exit %></p></li>
-
-            <li><p><strong class="violet">Spaceship:</strong> <%= @trip.spaceship %></p></li>
-            <li><p><strong class="violet">Comment from agency: "</strong><%= @trip.description %><strong class="violet">"</strong></p></li>
-            <li><p><strong class="violet">Chance of survival: </strong> <%= @trip.survival %> %</p></li>
-          </div>
-        </div>
-    </div>
-
-    <div class="cards">
-      <div class="card-show-booking">
-        <div class="p-3 text-center">
-
-        <h1 class="book">Book your trip now!</h1>
-
-        <div class="container">
-          <div class="row justify-content-center">
-            <div class="col-sm-8 text-center">
-
-        <div class="form-container">
-          <div class="header">
-
-          </div>
-
-          <div class="flex-between">
-            <h3>Participants :</h3>
-            <br>
-            <div class="actions" data-controller="button" >
-              <a id="minus" class="normal" data-button-target="moins" data-action="click->button#minus">-</a>
-              <span id="counter" data-count="1" data-button-target="count"> 1 </span>
-
-              <a id="inc" class="normal" data-button-target="plus" data-action="click->button#plus">+</a>
-
-
+              <li><h3 class="violet"><strong>Planet:</strong> <%= @trip.planet %></h3></li>
               <br>
+              <li><p><strong class="violet">Gravity: </strong> <%= @trip.gravity%></p></li>
+              <li><p><strong class="violet">Extra-vehicular activities: </strong><%= @trip.exit %></p></li>
+
+              <li><p><strong class="violet">Spaceship:</strong> <%= @trip.spaceship %></p></li>
+              <li><p><strong class="violet">Comment from agency: "</strong><%= @trip.description %><strong class="violet">"</strong></p></li>
+              <li><p><strong class="violet">Chance of survival: </strong> <%= @trip.survival %> %</p></li>
+            </div>
+          </div>
+      </div>
+
+      <div class="cards">
+        <div class="card-show-booking">
+          <div class="p-3 text-center">
+
+          <h3 class="book">Book your trip now!</h3>
+
+          <div class="container">
+            <div class="row justify-content-center">
+              <div class="col-sm-8 text-center">
+
+          <div class="form-container">
+            <div class="header">
+
+            </div>
+
+            <div class="flex-between">
+              <h4>Participants :</h4>
               <br>
+              <div class="actions" data-controller="button" >
+                <a id="minus" class="normal" data-button-target="moins" data-action="click->button#minus">-</a>
+                <span id="counter" data-count="1" data-button-target="count"> 1 </span>
 
-              <div id="price-per-person" >
-              <span id="per-night" data-button-target="price"> <%= @trip.price_per_night %></span><span> $ per night</span>
-              <div id="transparent" data-button-target="fixedprice"><%= @trip.price_per_night %></div>
+                <a id="inc" class="normal" data-button-target="plus" data-action="click->button#plus">+</a>
 
+                <br>
+                <br>
+
+                <div class="price-per-person" >
+                <span id="per-night" data-button-target="price"> <%= @trip.price_per_night %></span> <span> $ per night</span>
+                <div id="transparent" data-button-target="fixedprice"><%= @trip.price_per_night %></div>
+                </div>
+
+                <div class="price-per-person" >
+                <span id="per-night-2" data-button-target="price"> <%= @trip.transport_price %></span><span> $ transport fee</span>
+                <div id="transparent" data-button-target="fixedprice"><%= @trip.price_per_night %></div>
+                </div>
               </div>
             </div>
           </div>
-
-
-
-
         </div>
-
       </div>
     </div>
-  </div>
 
+      <br>
 
+      <%= simple_form_for [@trip, @booking] do |f| %>
+      <div data-controller="form" data-action="change->form#recupDate" id= "start">
+        <%= f.input :start_date, as: :date, html5:true, required: true, prompt: "What's your start date" %>
+        <%= f.input :end_date, as: :date, html5:true, required: true, prompt: "What's your end date" %>
+      </div>
         <br>
+        <%= f.submit class:"button-show" %>
+      <% end %>
 
-        <%= simple_form_for [@trip, @booking] do |f| %>
-          <%= f.input :start_date, as: :date, html5:true, required: true, prompt: "What's your start date"%>
-          <%= f.input :end_date, as: :date, html5:true, required: true, prompt: "What's your end date"%>
-          <br>
-          <%= f.submit class:"button-show" %>
-        <% end %>
-        </div>
+      <br>
+
+      <div class="price-per-person" id="nights" >
+      <span id="per-night" data-button-target="price"></span><span> nights </span>
+
+      </div>
+
+      <div class="price-per-person" id="total-price">
+      <span id="per-night" data-button-target="price"></span><span> $ Total </span>
+
+      </div>
+
+
+
+
           </div>
-
-       
+            </div>
+          </div>
+        </div>
         </div>
       </div>
-      </div>
-    </div>
 
-  </div>
+    </div>
 </div>
