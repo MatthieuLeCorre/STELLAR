@@ -1,42 +1,43 @@
 <%= render "shared/search_bar" %>
 
-<div class="container">
-  <ul>
-    <div class="title">
-      <h2 class="text-center"> All the best trips ! </h2>
-    </div>
-
-    <div class="cards">
-    <% @trips.each do |trip| %>
-        <div class="card-trip-index">
-
-        <%= link_to trip_path(trip.id) do %>
-              <% if trip.photo.attached? == false %>
-                <%= image_tag("https://images.theconversation.com/files/392339/original/file-20210329-17-1vm95zi.jpg?ixlib=rb-1.1.0&q=45&auto=format&w=1200&h=675.0&fit=crop", class: "img-card") %>
-                <% else %>
-                <%= image_tag(cl_image_path trip.photo.key, height: 200, width: 430, class: "img-card") %>
-                <% end %>
+<div class="container d-flex">
+  <div class="flex-fill">
+      <div class="title">
+        <h2 class="text-center"> All the best trips ! </h2>
+      </div>
+      <div class="cards-trip">
+        <% @trips.each do |trip| %>
+        <div class="card-product">
+          <%= link_to trip_path(trip.id) do %>
+            <% if trip.photo.attached? == false %>
+              <%= image_tag("https://images.theconversation.com/files/392339/original/file-20210329-17-1vm95zi.jpg?ixlib=rb-1.1.0&q=45&auto=format&w=1200&h=675.0&fit=crop" ) %>
+            <% else %>
+              <%= image_tag(cl_image_path trip.photo.key, height: 200, width: 430 ) %>
             <% end %>
-          <div class="card-trip-infos-index">
-
-                <li><h3><strong class="violet" >Planet:</strong> <%= trip.planet %></h3></li>
-                <li><h6><strong class="violet">Gravity: </strong> <%= trip.gravity%></h6></li>
-                <li><p><strong>Extra-vehicular activities: </strong><%= trip.exit %></p></li>
-                <li><p><strong>Price per night: </strong><%= currency(trip.price_per_night) %></p></li>
-                <li><p><strong>Transport price:</strong> <%= currency(trip.transport_price) %></p></li>
-                <li><p><strong>Spaceship:</strong> <%= trip.spaceship %></p></li>
-                <li><p><strong>"</strong><%= trip.description %><strong>"</strong></p></li>
-                <br>
-          </div>
-
-          <div class="text-center">
+          <% end %>
+          <div class="card-product-infos">
+            <h3><strong class="violet" >Planet:</strong> <%= trip.planet %></h3>
+            <h6><strong class="violet">Gravity: </strong> <%= trip.gravity%></h6>
+            <p><strong>Extra-vehicular activities: </strong><%= trip.exit %></p>
+            <p><strong>Price per night: </strong><%= currency(trip.price_per_night) %></p>
+            <p><strong>Transport price:</strong> <%= currency(trip.transport_price) %></p>
+            <p><strong>Spaceship:</strong> <%= trip.spaceship %></p>
+            <p><strong>"</strong><%= trip.description %><strong>"</strong></p>
+            <br>
             <p><%= link_to "See more", trip_path(trip.id), class: "button-perso-2" %></p>
           </div>
-
-
         </div>
         <% end %>
+      </div>
+  </div>
+  <div>
+    <div class="title">
+      <h2 class="text-center"> 🚀 Launching sites </h2>
     </div>
-
-  </ul>
+    <div id="index-map"style="width: 500px; height: 100vh;"
+      data-controller="mapbox"
+      data-mapbox-markers-value="<%= @markers.to_json %>"
+      data-mapbox-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
+    </div>
+  </div>
 </div>

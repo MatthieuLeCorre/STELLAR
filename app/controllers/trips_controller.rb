@@ -6,6 +6,13 @@ class TripsController < ApplicationController
     else
       @trips = policy_scope(Trip).order(created_at: :desc)
     end
+
+    @markers = @trips.geocoded.map do |flat|
+      {
+        lat: flat.latitude,
+        lng: flat.longitude
+      }
+    end
   end
 
   def show
@@ -58,6 +65,6 @@ class TripsController < ApplicationController
   def trip_params
     params.require(:trip).permit(:planet, :gravity, :exit, :price_per_night,
                                  :transport_price, :spaceship, :description,
-                                 :survival, :photo)
+                                 :survival, :launch_address, :photo)
   end
 end
