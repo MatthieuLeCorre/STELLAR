@@ -27,7 +27,7 @@
               <% if booking.trip.photo.attached? == false %>
                 <%= image_tag("https://images.theconversation.com/files/392339/original/file-20210329-17-1vm95zi.jpg?ixlib=rb-1.1.0&q=45&auto=format&w=1200&h=675.0&fit=crop", class: "img-card img-dashboard") %>
                 <% else %>
-                <%= image_tag(cl_image_path trip.photo.key, height: 200, width: 430, class: "img-card img-dashboard") %>
+                <%= image_tag(cl_image_path booking.trip.photo.key, height: 200, width: 430, class: "img-card img-dashboard") %>
               <% end %>
             <% end %>
           <div class="card-infos">
