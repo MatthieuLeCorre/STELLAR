@@ -4,7 +4,12 @@
   <% else %>
     <%= cl_image_tag trip.photo.key, class: "img-card" %>
   <% end %>
-  <h3>⭐<strong><%= trip.rating %>/5</strong> (<%= trip.number_of_comments %>)</h3>
+
+  <% if trip.rating.nil? || trip.number_of_comments.nil? %>
+    <h3 style="font-size: 0.75rem">🧑‍🚀 Become the first traveler</h3>
+  <% else  %>
+    <h3>⭐<strong><%= trip.rating %>/5</strong> (<%= trip.number_of_comments %>)</h3>
+  <% end  %>
   <div>
     <h3><%= trip.planet %></h3>
     <h3><strong><%= currency(trip.price_per_night) %></strong>/night</h3>

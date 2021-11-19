@@ -33,9 +33,10 @@ class TripsController < ApplicationController
   def new
     @trip = Trip.new
     authorize @trip
-    @spaceships = ["Space X Falcon 9", "Space X Falcon Heavy", "Ariane 5",
-                   "NASA Orion Spacecraft", "NASA Atlantis Spacecraft", "Angara",
-                   "Starship SN15", "Proton"]
+    @planets = Trip.all.map { |trip| trip.planet }
+    @spaceships = Trip.all.map { |trip| trip.spaceship }
+    @launch_address = Trip.all.map { |trip| trip.launch_address }
+    @gravity = Trip.all.map { |trip| trip.gravity }
   end
 
   def create
@@ -53,6 +54,10 @@ class TripsController < ApplicationController
   def edit
     @trip = Trip.find(params[:id])
     authorize @trip
+    @planets = Trip.all.map { |trip| trip.planet }
+    @spaceships = Trip.all.map { |trip| trip.spaceship }
+    @launch_address = Trip.all.map { |trip| trip.launch_address }
+    @gravity = Trip.all.map { |trip| trip.gravity }
   end
 
   def update
