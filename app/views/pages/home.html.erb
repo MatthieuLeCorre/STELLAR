@@ -7,49 +7,40 @@
 
 
 <div class="container">
-  <ul>
+  <ul class="mb-5">
     <div class="title">
-      <h2 class="text-center"> Discover great experiences ! </h2>
+      <h2 class="text-center"><strong> Discover next trip in space ! </strong></h2>
     </div>
 
     <div class="cards">
       <% @trips_good.each do |trip| %>
         <div class="card-trip">
-
-
-                <div>
+              <div>
                 <%= link_to trip_path(trip.id) do %>
-                      <% if trip.photo.attached? == false %>
-                        <%= image_tag("https://images.theconversation.com/files/392339/original/file-20210329-17-1vm95zi.jpg?ixlib=rb-1.1.0&q=45&auto=format&w=1200&h=675.0&fit=crop", class: "img-card") %>
-                        <% else %>
-                        <%= image_tag(cl_image_path trip.photo.key, height: 200, width: 430, class: "img-card") %>
-                        <% end %>
+                  <% if trip.photo.attached? == false %>
+                    <%= image_tag("https://images.theconversation.com/files/392339/original/file-20210329-17-1vm95zi.jpg?ixlib=rb-1.1.0&q=45&auto=format&w=1200&h=675.0&fit=crop", class: "img-card") %>
+                    <% else %>
+                    <%= image_tag(cl_image_path trip.photo.key, height: 200, width: 430, class: "img-card") %>
                     <% end %>
-                </div>
+                <% end %>
+              </div>
 
                 <div>
                   <div class="card-trip-infos">
 
-                        <li><h3><strong>Planet:</strong> <%= trip.planet %></h3></li>
-                        <li><h6><strong>Gravity: </strong> <%= trip.gravity%></h6></li>
-                        <li><p><strong>Trip infos: </strong> <%= trip.description%></p></li>
+                    <li><h3><strong>Planet:</strong> <%= trip.planet %></h3></li>
+                    <li><h6><strong>Gravity: </strong> <%= trip.gravity%></h6></li>
+                    <li><p><strong>Trip infos: </strong> <%= trip.description%></p></li>
                 </div>
-
-
-
-
         </div>
-                        <div class="text-center">
-                          <%= link_to "See more", trip_path(trip), class: "button-perso-3"%>
-                        </div>
+        <div class="text-center">
+          <%= link_to "See more", trip_path(trip), class: "button-perso-3"%>
+        </div>
       </div>
-
-
-
-
-
-
       <% end %>
+    </div>
+    <div class="center mt-4">
+      <%= link_to "See all", trips_path, class: "btn-link"%>
     </div>
   </ul>
 
@@ -57,7 +48,7 @@
  <br>
  <br>
 
-<div class="text-center">
+<div class="text-center mt-5">
     <h2>Some people think we offer pretty crazy experiences</h3>
   </div>
 
