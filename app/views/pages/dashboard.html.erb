@@ -31,10 +31,10 @@
                 <i class="far fa-edit"></i>
               <% end %>
             </div>
-            <li><p>Start date : <%= booking.start_date%></p></li>
-            <li><p>End date : <%= booking.end_date %></p></li>
-            <li><p>Price: <%= currency(booking.price) %></p></li>
-            <li><p>Payment: <%= currency(booking.paid_price) %></p></li>
+            <li><p><strong>Start date:</strong><%= booking.start_date%></p></li>
+            <li><p><strong>End date:</strong> <%= booking.end_date %></p></li>
+            <li><p><strong>Price:</strong><%= currency(booking.price) %></p></li>
+            <li><p><strong>Payment:</strong><%= currency(booking.paid_price) %></p></li>
             <br>
             <div class="text-center">
               <%= link_to "See more", booking_path(booking.id), class: "btn-primary-small" %>
@@ -52,9 +52,17 @@
 
 
 
-    <div class="cards">
+    <div class="grid-index">
       <% @trips.each do |trip| %>
-        <div class="card-dashboard-2">
+        <div class="card-index">
+
+          <div class="icone-border-delete">
+            <%= link_to trip_path(trip), method: :delete, data: {confirm: "Are you sure?" } do %>
+              <i class="far fa-trash-alt icone-delete"></i>
+            <% end %>
+          </div>
+
+
           <%= link_to trip_path(trip.id) do %>
             <% if trip.photo.attached? == false %>
               <%= image_tag("https://images.theconversation.com/files/392339/original/file-20210329-17-1vm95zi.jpg?ixlib=rb-1.1.0&q=45&auto=format&w=1200&h=675.0&fit=crop", class: "img-card") %>
@@ -63,21 +71,24 @@
             <% end %>
           <% end %>
           <div class="card-trip-infos">
-            <li><h3><strong class="violet" >Planet:</strong> <%= trip.planet %></h3></li>
-            <li><h6><strong class="violet">Gravity: </strong> <%= trip.gravity%></h6></li>
+            <li><h3><strong>Planet:</strong> <%= trip.planet %></h3></li>
+
+            <div class="icone-edit">
+              <%= link_to edit_trip_path(trip) do %>
+                <i class="far fa-edit"></i>
+              <% end %>
+            </div>
+
+
+            <li><p><strong>Gravity: </strong> <%= trip.gravity%></p></li>
             <li><p><strong>Extra-vehicular activities: </strong><%= trip.exit %></p></li>
             <li><p><strong>Price per night: </strong><%= currency(trip.price_per_night) %></p></li>
             <li><p><strong>Transport price:</strong> <%= currency(trip.transport_price) %></p></li>
             <li><p><strong>Spaceship:</strong> <%= trip.spaceship %></p></li>
             <li><p><strong>"</strong><%= trip.description %><strong>"</strong></p></li>
-            <br>
-            <li><p><%= link_to "See more", trip_path(trip), class: "button-perso-2" %></p></li>
           </div>
-
-          <div class="d-flex flex-column text-center">
-          <br>
-            <%= link_to "Delete this trip", trip_path(trip), method: :delete, class:"button-perso-dashboard text-center", data: { confirm: "Are you sure?" } %>
-            <%= link_to "Modify this trip", edit_trip_path(trip), class:"button-perso-dashboard text-center" %>
+          <div class="text-center">
+            <%= link_to "See more" , trip_path(trip), class:"btn-primary-small" %>
           </div>
         </div>
       <% end %>
