@@ -76,7 +76,7 @@ trip5 = Trip.create({
   price_per_night: 10600,
   transport_price: 8300,
   spaceship: "Space X Falcon 9",
-  description: "You need some warmth and you're not afraid of sun burns ? This trip is made for you ! ",
+  description: "You need some warmth and you're not afraid of sun burns ? This trip is made for you !",
   survival: 17,
   launch_address: launch_address.sample
 })
@@ -100,7 +100,7 @@ trips7 = Trip.create({
   price_per_night: 30_000,
   transport_price: 10_000,
   spaceship: 'Starship SN15',
-  description: '',
+  description: 'Neptune is da shit baby !!',
   survival: 78,
   launch_address: launch_address.sample
 })
@@ -110,7 +110,7 @@ trips8 = Trip.create({
   gravity: 'strong',
   price_per_night: '3400',
   transport_price: '500',
-  description: '',
+  description: 'The best Planet in the Solar System :-)',
   survival: 75,
   launch_address: launch_address.sample
 })
