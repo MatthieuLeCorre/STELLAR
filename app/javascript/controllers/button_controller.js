@@ -26,12 +26,7 @@ export default class extends Controller {
     if (isNaN(parseFloat(transport + (nights * parseFloat((document.querySelector("#per-night").innerHTML))))) === false) {
     document.querySelector('#toto span').insertAdjacentHTML("beforeend", parseFloat(transport + (nights * parseFloat((document.querySelector("#per-night").innerHTML)))));
     }
-
-
-
-
   }
-
 
   minus(event) {
     const fixedprice = parseFloat(document.querySelector("#jsaisplus").innerText);
