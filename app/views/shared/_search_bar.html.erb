@@ -2,37 +2,29 @@
 <div class="container search-container index-1">
 
   <div class="search-form-control form-group">
-    <div>
+    <div class="px-3">
       <%= form_tag trips_path, method: :get do %>
-        <%= text_field_tag :query,
-          params[:query],
-          class: "form-control",
-          placeholder: "Find a planet"
-        %>
+        <%= text_field_tag :query, params[:query], class: "form-control", placeholder: "Find a planet" %>
     </div>
-    <div>
+    <div class="px-2">
      <%= select_tag :spaceship, options_for_select(["Space X Falcon 9", "Space X Falcon Heavy", "Ariane 5",
-                   "NASA Orion Spacecraft", "NASA Atlantis Spacecraft", "Angara",
-                   "Starship SN15", "Proton"]),
-        class: "form-control",
-        prompt: "Choose a spaceship"
-      %>
+                   "NASA Orion Spacecraft", "NASA Atlantis Spacecraft", "Angara", "Starship SN15", "Proton"]), class: "form-control", prompt: "Choose a spaceship" %>
     </div>
-    <div>
+    <div class="px-2">
       <%= number_field_tag :survival, nil, min: 0, max: 100,
         class: "form-control",
         value: "#{params[:survival] if params[:survival]}",
         placeholder: "Min survival pourcentage"
       %>
     </div>
-    <div>
+    <div class="px-2">
       <%= number_field_tag :price_per_night, nil, min: 0,
         class: "form-control",
         value: "#{params[:price_per_night] if params[:price_per_night]}",
         placeholder: "Max price"
       %>
     </div>
-    <div>
+    <div class="px-2">
       <%= button_tag "Search", class:"btn" do %>
         <i class="fas fa-search"></i>
     </div>
