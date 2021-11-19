@@ -23,8 +23,8 @@ class BookingsController < ApplicationController
     @trip = Trip.find(params[:trip_id])
     @booking.name = "Trip to #{@trip.planet}"
     @booking.trip = @trip
+    @booking.price = (((@booking.end_date - @booking.start_date) * @trip.price_per_night) + @trip.transport_price) * @booking.number_of_passengers
     @booking.user_id = @user.id
-    @booking.price = 10000
     @booking.save
     redirect_to booking_payment_path(@booking)
   end
