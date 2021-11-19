@@ -17,6 +17,7 @@ class Trip < ApplicationRecord
 
   after_validation :geocode, if: :will_save_change_to_launch_address?
 
+  
   has_many :bookings
   has_many :users, through: :bookings
   has_one_attached :photo
