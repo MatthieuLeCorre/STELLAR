@@ -1,16 +1,23 @@
-<div class="container">
-  <h3>Edit this space trip</h3>
-  <%= simple_form_for [@trip] do |f| %>
-    <%= f.input :planet, placeholder: "Where is your trip?" %>
-    <%= f.input :description, as: :text, placeholder: "Description of the trip here!" %>
-    <%= f.input :launch_address, placeholder: "Where will you launch?" %>
-    <%= f.input :photo, as: :file %>
-    <%= f.input :gravity, placeholder: "What is the gravity of your planet?" %>
-    <%= f.input :exit, as: :boolean, placeholder: "Can you go outside the colony?" %>
-    <%= f.input :price_per_night, as: :integer, placeholder: "What's the price per night?"%>
-    <%= f.input :transport_price, as: :integer, placeholder: "What's the transport price?"%>
-    <%= f.input :spaceship, collection: @spaceships, placeholder: "Which spaceship will transport the visitors?"%>
-    <%= f.input :survival, collection_select: 0..100, input_html: { min: '0', max: '100' } %>
-    <%= f.submit class:"btn btn-flat" %>
-  <% end %>
+<div class="container-login">
+  <div class="cards-login">
+    <div class="h2">Edit this space trip</div>
+      <div class="info-log">
+        <%= simple_form_for [@trip] do |f| %>
+          <%= f.input :planet, placeholder: "Where is your trip?" %>
+          <%= f.input :description, as: :text, placeholder: "Description of the trip here!" %>
+          <%= f.input :launch_address, placeholder: "Where will you launch?" %>
+          <%= f.input :photo, as: :file %>
+          <%= f.input :gravity, placeholder: "What is the gravity of your planet?" %>
+          <%= f.input :exit, as: :boolean, placeholder: "Can you go outside the colony?" %>
+          <%= f.input :price_per_night, as: :integer, placeholder: "What's the price per night?"%>
+          <%= f.input :transport_price, as: :integer, placeholder: "What's the transport price?"%>
+          <%= f.input :spaceship, collection: @spaceships, placeholder: "Which spaceship will transport the visitors?"%>
+          <%= f.input :survival, collection_select: 0..100, input_html: { min: '0', max: '100' } %>
+          <div class="center">
+            <%= f.submit class:"btn btn-primary" %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
 </div>
