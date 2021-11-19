@@ -5,7 +5,7 @@
 <div class="container">
   <div class="title">
 
-<a href=""></a>
+    <a href=""></a>
 
   </div>
     <div class="box">
@@ -44,30 +44,10 @@
               <div class="col-sm-8 text-center">
 
           <div class="form-container">
-            <div class="header">
-
-            </div>
-
             <div class="flex-between">
-              <h4 class="mt-3">Participants :</h4>
-              <br>
               <div class="actions" data-controller="button" >
-                <a id="minus" class="normal" data-button-target="moins" data-action="click->button#minus">-</a>
-                <span id="counter" data-count="1" data-button-target="count"> 1 </span>
-
-                <a id="inc" class="normal" data-button-target="plus" data-action="click->button#plus">+</a>
-
-                <br>
-                <br>
-
                 <div class="price-per-person" >
-                <span id="per-night" data-button-target="price"> <%= @trip.price_per_night %></span> <span> $ per night</span>
-                <div id="transparent" data-button-target="fixedprice"><%= @trip.price_per_night %></div>
-                </div>
-
-                <div class="" >
-
-                <div id="transparent" data-button-target="fixedprice"><%= @trip.price_per_night %></div>
+                  <span id="per-night" data-button-target="price"> <%= @trip.price_per_night %></span> <span> $ per night</span>
                 </div>
               </div>
             </div>
@@ -77,14 +57,15 @@
     </div>
 
       <br>
-
-      <%= simple_form_for [@trip, @booking] do |f| %>
-      <div data-controller="form" data-action="change->form#recupDate" id= "start">
-          <%= f.input :start_date, as: :date, html5:true, required: true, prompt: "What's your start date" %>
-          <%= f.input :end_date, as: :date, html5:true, required: true, prompt: "What's your end date" %>
-        </div>
+      <div data-controller="form" id= "start">
+      <%= simple_form_for [@trip, @booking], data:{action: "change->form#compute", form_target: 'form'}  do |f| %>
+          <%= f.input :number_of_passengers, required: true, input_html: {data: {form_target: 'passengers' } } %>
+          <%= f.input :start_date, as: :date, html5:true, required: true, prompt: "What's your start date", input_html: {data: {form_target: 'startDate' } }  %>
+          <%= f.input :end_date, as: :date, html5:true, required: true, prompt: "What's your end date", input_html: {data: {form_target: 'endDate' } }   %>
+      </div>
           <br>
           <%= f.submit class:"button-show" %>
+          <br>
         <% end %>
 
         <br>
@@ -97,42 +78,30 @@
             </div>
 
             <div class="sub-total" id="total-price">
-            <span data-count="0" data-button-target="countsub" class="subb" id="priice"> <%= @trip.price_per_night %> </span><span> $</span>
+            <span data-count="0" data-button-target="countsub" class="subb" id="priice"> </span><span> $</span>
             </div>
         </div>
 
         <div id="jsaisplus2" class="transportt"><%= @trip.transport_price %></div>
 
         <div class="d-flex justify-content-between mt-3">
-            <div class="" id="" data-controller="button">
-            <span class="transport" id="surlign"></span><span class="surlign">Transport fee</span>
-            </div>
+          <div class="" id="" data-controller="button">
+            <span class="transport" id="surlign"></span><span class="surlign">Transport fee per passenger</span>
+          </div>
 
-            <div > <%= @trip.transport_price %> $
-            </div>
+          <div >
+            <%= @trip.transport_price %> $
+          </div>
         </div>
 
         <span class="ligne"> _____________________________________________________ </span>
 
-
         <div class="d-flex justify-content-between mt-3" id="toto">
           <div class="bold">Total</div>
-
-
-
           <div class="bold">
-          <span class="transport" id="surlign"></span> $
+            <span class="transport" id="surlign"></span> $
           </div>
-
         </div>
-
-
-
-
-
-
-
-
           </div>
             </div>
           </div>

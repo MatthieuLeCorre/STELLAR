@@ -2,27 +2,29 @@ import { Controller } from "@hotwired/stimulus"
 
 export default class extends Controller {
 
-  static targets = ["end", "start"]
+  static targets = ['form', 'passengers', 'startDate', 'endDate']
 
-  recupDate(event) {
-    document.querySelector('#nights span').innerHTML = "";
-    document.querySelector('#total-price span').innerHTML = "";
-    document.querySelector("#priice").innerHTML = "";
-    document.querySelector('#toto span').innerHTML = "";
+  compute(event) {
+
+    const passengers = this.passengersTarget.value;
+    const startInput = this.startDateTarget.value;
+    const endInput = this.endDateTarget.value;
     const transport = parseFloat(document.querySelector(".transportt").innerHTML);
-    const startInput = document.getElementById('start').children[0].children[1].children[0];
-    const endInput = document.getElementById('start').children[1].children[1].children[0];
-
-    let nights = (Date.parse(endInput.value) - Date.parse(startInput.value)) / (1000 * 60 * 60 * 24);
-    let participantsNumber = parseFloat((document.querySelector("#counter").innerHTML))
+    const priceNight = parseFloat(document.querySelector("#per-night").innerHTML);
+    let nights = (Date.parse(endInput) - Date.parse(startInput)) / (1000 * 60 * 60 * 24);
 
     if (isNaN(nights) === false) {
-    document.querySelector('#nights span').insertAdjacentHTML("beforeend", nights);
-      console.log(document.querySelector("#per-night").innerHTML);
+      document.querySelector('#nights span').innerHTML = "";
+      document.querySelector('#nights span').insertAdjacentHTML("beforeend", nights);
 
-      document.querySelector('#total-price span').insertAdjacentHTML("beforeend", (nights * parseFloat((document.querySelector("#per-night").innerHTML))));
+      document.querySelector('#counter2').innerHTML = "";
+      document.querySelector('#counter2').insertAdjacentHTML("beforeend", passengers);
 
-      document.querySelector('#toto span').insertAdjacentHTML("beforeend", transport + (nights * parseFloat((document.querySelector("#per-night").innerHTML))));
+      document.querySelector('#priice').innerHTML = "";
+      document.querySelector('#priice').insertAdjacentHTML("beforeend", passengers * nights * priceNight);
+
+      document.querySelector('#toto span').innerHTML = "";
+      document.querySelector('#toto span').insertAdjacentHTML("beforeend", (passengers * (transport + (nights * priceNight))));
 
     }
   }
