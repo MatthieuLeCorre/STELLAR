@@ -7,7 +7,7 @@
       <% end %>
   </div>
   <div class="box">
-    <div class="cards">
+    <div class="cards pb-3">
       <div class="card-trip-show">
         <% if @trip.photo.attached? == false %>
           <%= image_tag("https://images.theconversation.com/files/392339/original/file-20210329-17-1vm95zi.jpg?ixlib=rb-1.1.0&q=45&auto=format&w=1200&h=675.0&fit=crop", class: "img-card") %>
@@ -19,13 +19,13 @@
           <br>
             <li><h3><strong>Planet:</strong> <%= @trip.planet %></h3></li>
             <br>
-            <li><p><strong class="violet">Gravity: </strong> <%= @trip.gravity%></p></li>
-            <li><p><strong class="violet">Extra-vehicular activities: </strong><%= @trip.exit %></p></li>
-            <li><p><strong class="violet">Price per night: </strong><%= currency(@trip.price_per_night) %></p></li>
-            <li><p><strong class="violet">Transport price:</strong> <%= currency(@trip.transport_price) %></p></li>
-            <li><p><strong class="violet">Spaceship:</strong> <%= @trip.spaceship %></p></li>
-            <li><p><strong class="violet">Comment from agency: "</strong><%= @trip.description %><strong class="violet">"</strong></p></li>
-            <li><p><strong class="violet">Chance of survival: </strong> <%= @trip.survival %> %</p></li>
+            <li class="padding"><p><strong>Gravity: </strong> <%= @trip.gravity%></p></li>
+            <li class="padding"><p><strong>Extra-vehicular activities: </strong><%= @trip.exit %></p></li>
+            <li class="padding"><p><strong>Price per night: </strong><%= currency(@trip.price_per_night) %></p></li>
+            <li class="padding"><p><strong>Transport price:</strong> <%= currency(@trip.transport_price) %></p></li>
+            <li class="padding"><p><strong>Spaceship:</strong> <%= @trip.spaceship %></p></li>
+            <li class="padding"><p><strong>Comment from agency: "</strong><%= @trip.description %><strong class="violet">"</strong></p></li>
+            <li class="padding mb-5"><p><strong>Chance of survival: </strong> <%= @trip.survival %> %</p></li>
           </div>
         </div>
     </div>
