@@ -6,14 +6,15 @@ class TripsController < ApplicationController
       @trips = policy_scope(Trip).order(created_at: :desc)
     end
     if params[:spaceship].present?
-      @trips = Trip.search_spaceship(params[:spaceship])
+      @trips = @trips.search_spaceship(params[:spaceship])
     end
     if params[:survival].present?
-      @trips = @trips.select { |trip| trip.survival >= params[:survival].to_i }
+      @trips = @trips.where('survival >= ?', params[:survival])
     end
     if params[:price_per_night].present?
-    @trips = @trips.select { |trip| trip.price_per_night <= params[:price_per_night].to_i }
+      @trips = @trips.where('price_per_night <= ?', params[:price_per_night])
     end
+
     @markers = @trips.geocoded.map do |trip|
       {
         lat: trip.latitude,
