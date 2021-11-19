@@ -7,6 +7,7 @@
   margin: auto;
   color: white;
   border-radius: $border-radius;
+  text-decoration: none;
 }
 
 .btn-primary-small {
@@ -91,4 +92,35 @@
 .btn-link:hover {
   font-size: 18px;
   color: black;
+}
+
+
+.btn-primary-small-dash {
+  color: black;
+  padding: 4px 10px;
+  font-size: 16px;
+  margin: auto;
+  border: solid 1px black;
+  border-radius: $border-radius;
+  text-decoration: none;
+}
+
+.btn-primary-small-done {
+  background-color: #6ad58b;
+  color: white;
+  padding: 4px 10px;
+  font-size: 16px;
+  margin: auto;
+  border-radius: $border-radius;
+  text-decoration: none;
+}
+
+.btn-primary-small-refused {
+  background-color: #ef4444;
+  color: white;
+  padding: 4px 10px;
+  font-size: 16px;
+  margin: auto;
+  border-radius: $border-radius;
+  text-decoration: none;
 }
