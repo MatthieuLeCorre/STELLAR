@@ -37,10 +37,10 @@ class BookingsController < ApplicationController
 
   def update
     @booking = Booking.find(params[:id])
+    @booking.update(booking_params)
     @trip = Trip.find(@booking.trip_id)
     authorize @booking
     @booking.price = (((@booking.end_date - @booking.start_date) * @trip.price_per_night) + @trip.transport_price) * @booking.number_of_passengers
-    @booking.update(booking_params)
     if @booking.save
       redirect_to booking_payment_path(@booking)
     else
